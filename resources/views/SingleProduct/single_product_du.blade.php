@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_du')
 @section('title', $data['productd'][0]['product_name_gr'])
 @section('content')
 
@@ -16,7 +16,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item active" aria-current="page"><a href="">البسة رجالية</a></li>
                             <li class="breadcrumb-item " aria-current="page"> <a href="">رجالي</a></li>
-                            <li class="breadcrumb-item"><a href="index-2.html">الرئيسية</a></li>
+                            <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
                         </ol>
                     </nav>
                 </div>

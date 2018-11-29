@@ -109,10 +109,10 @@
                                 <div class="product-box">
                                     <div class="img-wrapper">
                                         <div class="front">
-                                            <a href="/product/مانطو_رجالي_طويل"><img src="../assets/images/fashion/product/7.jpg" class="img-fluid" alt=""></a>
+                                            <a href="/product/مانطو_رجالي"><img src="../assets/images/fashion/product/7.jpg" class="img-fluid" alt=""></a>
                                         </div>
                                         <div class="back">
-                                            <a href="/product/مانطو_رجالي_طويل"><img src="../assets/images/fashion/product/1-.jpg" class="img-fluid" alt=""></a>
+                                            <a href="/product/مانطو_رجالي"><img src="../assets/images/fashion/product/1-.jpg" class="img-fluid" alt=""></a>
                                         </div>
                                         <div class="cart-info cart-wrap">
                                             <button  title="Add to cart"><i class="icon-shopping-cart" ></i></button>
@@ -123,7 +123,7 @@
                                     </div>
                                     <div class="product-detail">
 
-                                        <a href="/product/مانطو_رجالي_طويل"><h6>Slim Fit Cotton Shirt</h6></a>
+                                        <a href="/product/مانطو_رجالي"><h6>Slim Fit Cotton Shirt</h6></a>
                                         <h4>$500.00</h4>
 
                                     </div>
@@ -135,10 +135,10 @@
                                             <span class="lable4">on sale</span>
                                         </div>
                                         <div class="front">
-                                            <a href="/product/مانطو_رجالي_طويل"><img src="../assets/images/fashion/product/2.jpg" class="img-fluid" alt=""></a>
+                                            <a href="/product/مانطو_رجالي"><img src="../assets/images/fashion/product/2.jpg" class="img-fluid" alt=""></a>
                                         </div>
                                         <div class="back">
-                                            <a href="/product/مانطو_رجالي_طويل"><img src="../assets/images/fashion/product/3.jpg" class="img-fluid" alt=""></a>
+                                            <a href="/product/مانطو_رجالي"><img src="../assets/images/fashion/product/3.jpg" class="img-fluid" alt=""></a>
                                         </div>
                                         <div class="cart-info cart-wrap">
                                             <button  title="Add to cart"><i class="icon-shopping-cart" ></i></button>
@@ -149,7 +149,7 @@
                                     </div>
                                     <div class="product-detail">
 
-                                        <a href="/product/مانطو_رجالي_طويل"><h6>Slim Fit Cotton Shirt</h6></a>
+                                        <a href="/product/مانطو_رجالي"><h6>Slim Fit Cotton Shirt</h6></a>
                                         <h4>$500.00 <del>$600.00</del></h4>
 
                                     </div>
@@ -157,10 +157,10 @@
                                 <div class="product-box">
                                     <div class="img-wrapper">
                                         <div class="front">
-                                            <a href="/product/مانطو_رجالي_طويل"><img src="../assets/images/fashion/product/9.jpg" class="img-fluid" alt=""></a>
+                                            <a href="/product/مانطو_رجالي"><img src="../assets/images/fashion/product/9.jpg" class="img-fluid" alt=""></a>
                                         </div>
                                         <div class="back">
-                                            <a href="/product/مانطو_رجالي_طويل"><img src="../assets/images/fashion/product/5.jpg" class="img-fluid" alt=""></a>
+                                            <a href="/product/مانطو_رجالي"><img src="../assets/images/fashion/product/5.jpg" class="img-fluid" alt=""></a>
                                         </div>
                                         <div class="cart-info cart-wrap">
                                             <button  title="Add to cart"><i class="icon-shopping-cart" ></i></button>
@@ -171,7 +171,7 @@
                                     </div>
                                     <div class="product-detail">
 
-                                        <a href="/product/مانطو_رجالي_طويل"><h6>Slim Fit Cotton Shirt</h6></a>
+                                        <a href="/product/مانطو_رجالي"><h6>Slim Fit Cotton Shirt</h6></a>
                                         <h4>$500.00</h4>
 
                                     </div>
@@ -183,10 +183,10 @@
                                             <span class="lable4">on sale</span>
                                         </div>
                                         <div class="front">
-                                            <a href="/product/مانطو_رجالي_طويل"><img src="../assets/images/fashion/product/6.jpg" class="img-fluid" alt=""></a>
+                                            <a href="/product/مانطو_رجالي"><img src="../assets/images/fashion/product/6.jpg" class="img-fluid" alt=""></a>
                                         </div>
                                         <div class="back">
-                                            <a href="/product/مانطو_رجالي_طويل"><img src="../assets/images/fashion/product/7.jpg" class="img-fluid" alt=""></a>
+                                            <a href="/product/مانطو_رجالي"><img src="../assets/images/fashion/product/7.jpg" class="img-fluid" alt=""></a>
                                         </div>
                                         <div class="cart-info cart-wrap">
                                             <button  title="Add to cart"><i class="icon-shopping-cart" ></i></button>
@@ -197,7 +197,7 @@
                                     </div>
                                     <div class="product-detail">
 
-                                        <a href="/product/مانطو_رجالي_طويل"><h6>Slim Fit Cotton Shirt</h6></a>
+                                        <a href="/product/مانطو_رجالي"><h6>Slim Fit Cotton Shirt</h6></a>
                                         <h4>$500.00</h4>
 
                                     </div>

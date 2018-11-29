@@ -11,26 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    Session::flush();
+Route::get('/', 'VisitorController@index');
+Route::get('/out', 'VisitorController@out');
+Route::get('/currency', 'VisitorController@ChangeCurrency');
 
-    Session::put('lang', 'en');
 
-    return view('Home.index');
-});
-Route::get('/AR', function () {
-    Session::flush();
-    Session::put('lang','ar');
-
-    return view('Home.index_ar');
-});
-Route::get('/DU', function () {
-    Session::flush();
-
-    Session::put('lang','du');
-
-    return view('Home.index_du');
-});
 
 Auth::routes();
 

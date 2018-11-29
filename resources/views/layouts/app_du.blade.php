@@ -53,24 +53,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="header-contact">
-                        <ul>
-                            <li class="onhover-dropdown mobile-account">
-                                <i class="fa fa-user" aria-hidden="true"></i> Taal
-                                <ul class="onhover-show-div">
-                                    <li>
-                                        <a href="#" data-lng="en">
-                                            Arabisch
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" data-lng="es">
-                                            Engels
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                        </ul>
+                        
                     </div>
                 </div>
                 <div class="col-lg-6 text-right">
@@ -594,14 +577,14 @@
                                             <div class="show-div setting">
                                                 <h6>taal</h6>
                                                 <ul>
-                                                    <li><a href="#">english</a> </li>
-                                                    <li><a href="#">french</a> </li>
+                                                    <li><a href="#">Arabisch</a> </li>
+                                                    <li><a href="#">Engels</a> </li>
                                                 </ul>
                                                 <h6>currency</h6>
                                                 <ul class="list-inline">
                                                     <li><a href="#">euro</a> </li>
-                                                    <li><a href="#">rupees</a> </li>
-                                                    <li><a href="#">pound</a> </li>
+                                                    <li><a href="#">Kron</a> </li>
+
                                                     <li><a href="#">doller</a> </li>
                                                 </ul>
                                             </div>
@@ -931,5 +914,3 @@
 
 
 </html>
-
-

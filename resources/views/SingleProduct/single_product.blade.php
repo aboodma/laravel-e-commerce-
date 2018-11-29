@@ -57,8 +57,18 @@
                     <div class="col-lg-6 rtl-text">
                         <div class="product-right">
                             <h2> <?= $data['productd'][0]['product_name_en']?></h2>
-                            <h4><del>${{$data['productd'][0]['price_dolar']}}</del><span>55% off</span></h4>
-                            <h3>${{$data['productd'][0]['sold_price_dolar']}} </h3>
+                            @if(Session::get('session_currency')=='kr')
+                            <h4><del>{{Session::get('session_currency')}}{{$data['productd'][0]['price_kron']}}</del><span>55% off</span></h4>
+                            <h3>{{Session::get('session_currency')}}{{$data['productd'][0]['sold_price_kron']}} </h3>
+                            @endif
+                            @if(Session::get('session_currency')=='$')
+                            <h4><del>{{Session::get('session_currency')}}{{$data['productd'][0]['price_dolar']}}</del><span>55% off</span></h4>
+                            <h3>{{Session::get('session_currency')}}{{$data['productd'][0]['sold_price_dolar']}} </h3>
+                            @endif
+                            @if(Session::get('session_currency')=='€')
+                            <h4><del>{{Session::get('session_currency')}}{{$data['productd'][0]['price_euro']}}</del><span>55% off</span></h4>
+                            <h3>{{Session::get('session_currency')}}{{$data['productd'][0]['sold_price_euro']}} </h3>
+                            @endif
                             <ul class="color-variant">
                                 <li class="bg-light0"></li>
                                 <li class="bg-light1"></li>
