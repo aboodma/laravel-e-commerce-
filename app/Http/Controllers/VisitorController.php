@@ -65,11 +65,53 @@ class VisitorController extends Controller
       if (isset($session_currency)) {
       Session::forget('session_currency');
       }
-      
+
       $sessionId=Session::get('id');
         DB::table('visitors')->where('id',$sessionId)->update(['session_currency'=>$request->currency]);
         Session::put('session_currency', $request->currency);
-      return $request;
+        $sessionLang=Session::get('lang');
+        switch ($sessionLang) {
+          case 'en':
+            return view('Home.index');
+            break;
+            case 'ar':
+             return view('Home.index_ar');
+              break;
+              case 'du':
+                return view('Home.index_du');
+                break;
+
+          default:
+            return view('Home.index');
+            break;
+        }
+    }
+    public function ChangeLang(Request $request)
+    {
+      $session_currency=Session::get('session_lang');
+      if (isset($session_currency)) {
+      Session::forget('session_lang');
+      }
+
+      $sessionId=Session::get('id');
+        DB::table('visitors')->where('id',$sessionId)->update(['session_lang'=>$request->lang]);
+        Session::put('session_lang', $request->lang);
+        $sessionLang=Session::get('lang');
+        switch ($request->lang) {
+          case 'en':
+            return view('Home.index');
+            break;
+            case 'ar':
+             return view('Home.index_ar');
+              break;
+              case 'du':
+                return view('Home.index_du');
+                break;
+
+          default:
+            return view('Home.index');
+            break;
+        }
     }
 
     /**

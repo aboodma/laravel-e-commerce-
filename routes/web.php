@@ -14,6 +14,7 @@
 Route::get('/', 'VisitorController@index');
 Route::get('/out', 'VisitorController@out');
 Route::get('/currency', 'VisitorController@ChangeCurrency');
+Route::get('/lang', 'VisitorController@ChangeLang');
 
 
 
