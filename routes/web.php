@@ -11,12 +11,6 @@
 |
 */
 
-Route::get('/', 'VisitorController@index');
-Route::get('/out', 'VisitorController@out');
-Route::get('/currency', 'VisitorController@ChangeCurrency');
-Route::get('/lang', 'VisitorController@ChangeLang');
-
-
 
 Auth::routes();
 
@@ -27,3 +21,11 @@ Route::get('/product', 'ProductController@index');
 Route::get('/product/{product}', 'ProductController@single');
 Route::resource('Customer', 'CustomerController');
 Route::resource('Category', 'CategoryController');
+/* Visitors Route And Change Language AndChange Currency */
+//Home Page
+Route::get('/', 'VisitorController@index');
+//Change Currency
+Route::get('/currency', 'VisitorController@ChangeCurrency');
+//Change Language
+Route::get('/lang', 'VisitorController@ChangeLang');
+
