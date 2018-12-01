@@ -54,26 +54,7 @@
                 <div class="col-lg-6">
                     <div class="header-contact">
                         <ul>
-                            <li class="onhover-dropdown mobile-account">
-                                 اللغات
-                                <ul class="onhover-show-div">
-                                    <li>
-                                        <a href="/AR" data-lng="ar">
-                                            العربية
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/" data-lng="en">
-                                            English
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/DU" data-lng="du">
-                                            Dutch
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+
                             <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us:  123 - 456 - 7890</li>
                         </ul>
                     </div>
@@ -261,8 +242,8 @@
                                                 Back<i class="fa fa-angle-right pl-2" aria-hidden="true"></i>
                                             </div>
                                         </li>
-                                        <li class="mega"><a href="#">Home</a>
-                                            <ul class="mega-menu  home-menu">
+                                        <li class="mega"><a href="#">الرئيسية</a>
+                                            <!-- <ul class="mega-menu  home-menu">
                                                 <li>
                                                     <div class="container">
                                                         <div class="row">
@@ -306,9 +287,9 @@
                                                         </div>
                                                     </div>
                                                 </li>
-                                            </ul>
+                                            </ul> -->
                                         </li>
-                                        <li class="mega"><a href="#">features
+                                        <!-- <li class="mega"><a href="#">features
                                                 <div class="lable-nav">new</div>
                                             </a>
                                             <ul class="mega-menu feature-menu">
@@ -361,8 +342,8 @@
                                                     </div>
                                                 </li>
                                             </ul>
-                                        </li>
-                                        <li class="mega"><a href="#">products</a>
+                                        </li> -->
+                                        <!-- <li class="mega"><a href="#">products</a>
                                             <ul class="mega-menu feature-menu product-menu">
                                                 <li>
                                                     <div class="container">
@@ -443,28 +424,30 @@
                                                     </div>
                                                 </li>
                                             </ul>
-                                        </li>
-                                        <li class="mega"><a href="#">shop</a>
+                                        </li> -->
+                                        <li class="mega"><a href="#">التصنيفات</a>
                                             <ul class="mega-menu full-mega-menu layout-3">
                                                 <li>
                                                     <div class="container">
-                                                        <div class="row">
-                                                            <div class="col mega-box">
+                                                        <div class="row" dir="rtl">
+                                                            @foreach($categories['menus'] as $menu)
+
+                                                            <div class="col mega-box"dir="rtl">
                                                                 <div class="link-section">
-                                                                    <div class="menu-title"><h5>mens's fashion</h5></div>
+                                                                    <div class="menu-title"><h5>{{$menu->name_ar}}</h5></div>
                                                                     <div class="menu-content">
                                                                         <ul>
-                                                                            <li><a href="#">sports wear</a></li>
-                                                                            <li><a href="#">top</a></li>
-                                                                            <li><a href="#">bottom</a></li>
-                                                                            <li><a href="#">ethic wear</a></li>
-                                                                            <li><a href="#">sports wear</a></li>
-                                                                            <li><a href="#">shirts</a></li>
+                                                                          @foreach($categories['submenu'] as $submenu)
+                                                                          @if($submenu->category_id==$menu->id)
+                                                                            <li><a href="/Category/{{$submenu->id}}">{{$submenu->name_ar}}</a></li>
+                                                                            @endif
+                                                                            @endforeach
                                                                         </ul>
-                                                                    </div>
+                                                                      </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col mega-box">
+                                                            @endforeach
+                                                            <!-- <div class="col mega-box">
                                                                 <div class="link-section">
                                                                     <div class="menu-title"><h5>women's fashion</h5></div>
                                                                     <div class="menu-content">
@@ -478,8 +461,8 @@
                                                                         </ul>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="col mega-box">
+                                                            </div> -->
+                                                            <!-- <div class="col mega-box">
                                                                 <div class="link-section">
                                                                     <div class="menu-title"><h5>kids's fashion</h5></div>
                                                                     <div class="menu-content">
@@ -508,8 +491,8 @@
                                                                         </ul>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="col mega-box">
+                                                            </div> -->
+                                                            <!-- <div class="col mega-box">
                                                                 <div class="link-section">
                                                                     <div class="menu-title"><h5>men's accessories</h5></div>
                                                                     <div class="menu-content">
@@ -523,7 +506,7 @@
                                                                         </ul>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            </div> -->
                                                         </div>
                                                     </div>
                                                     <div class="row banner-padding">
@@ -537,9 +520,9 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">pages</a>
+                                        <!-- <li><a href="#">pages</a>
                                             <ul>
-                                                <li><a href="about-page.html">about us</a></li>
+                                                <li><a href="about-page.html">ss</a></li>
                                                 <li><a href="404.html">404</a></li>
                                                 <li><a href="lookbook.html">lookbook</a></li>
                                                 <li><a href="login.html">login</a></li>
@@ -556,7 +539,7 @@
                                                 <li><a href="dashboard.html">Dashboard</a></li>
                                                 <li><a href="faq.html">FAQ</a></li>
                                             </ul>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </nav>
                             </div>
@@ -936,5 +919,3 @@
 
 
 </html>
-
-

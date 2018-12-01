@@ -16,11 +16,9 @@ Auth::routes();
 
 Route::get('/admin', 'HomeController@index')->name('home');
 
-//Route::resource('product', 'ProductController');
-Route::get('/product', 'ProductController@index');
-Route::get('/product/{product}', 'ProductController@single');
-Route::resource('Customer', 'CustomerController');
-Route::resource('Category', 'CategoryController');
+
+// Route::resource('Customer', 'CustomerController');
+// Route::resource('Category', 'CategoryController');
 /* Visitors Route And Change Language AndChange Currency */
 //Home Page
 Route::get('/', 'VisitorController@index');
@@ -28,4 +26,12 @@ Route::get('/', 'VisitorController@index');
 Route::get('/currency', 'VisitorController@ChangeCurrency');
 //Change Language
 Route::get('/lang', 'VisitorController@ChangeLang');
+/* Visitors Route End here */
 
+/* Visitors Route And Change Language AndChange Currency */
+Route::get('/product/{product}', 'ProductController@single');
+
+
+/* Category Route */
+Route::get('/Category','CategoryController@index');
+Route::get('/Category/{sub_Category}','SubCategoryController@single');

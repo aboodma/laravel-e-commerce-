@@ -16,7 +16,11 @@ class VisitorController extends Controller
      */
     public function index(Request $request)
     {
-
+      // SELECT c1.id, c1.name_ar, c2.id, c2.name_ar FROM categories c1 LEFT JOIN sub__categories c2 ON c2.category_id = c1.id
+      $menus=DB::table('categories')->get();
+      $submenus=DB::table('sub__categories')->get();
+$categories=['menus'=>$menus,'submenu'=>$submenus];
+// return $categories['submenu'];die();
       $ip=$request->ip();
        $ipp=$request->server('SERVER_PORT');
        session()->regenerate();
@@ -41,16 +45,19 @@ class VisitorController extends Controller
          Session::put('id', $id);
 
        }
+       if (!isset($sessionLang)) {
+         $sessionLang='en';
+       }
 
        switch ($sessionLang) {
          case 'en':
-           return view('Home.index');
+           return view('Home.index')->with('categories',$categories);
            break;
            case 'ar':
-            return view('Home.index_ar');
+            return view('Home.index_ar')->with('categories',$categories);
              break;
              case 'du':
-               return view('Home.index_du');
+               return view('Home.index_du')->with('menus',$menus);
                break;
 
          default:
@@ -114,73 +121,12 @@ class VisitorController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+
     public function out()
     {
         Session::flush();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Visitor  $visitor
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Visitor $visitor)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Visitor  $visitor
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Visitor $visitor)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Visitor  $visitor
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Visitor $visitor)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Visitor  $visitor
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Visitor $visitor)
-    {
-        //
-    }
 }

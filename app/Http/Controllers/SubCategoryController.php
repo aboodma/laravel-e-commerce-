@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Sub_Category;
 use Illuminate\Http\Request;
+use App\Product;
+use App\ProductImages;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class SubCategoryController extends Controller
 {
@@ -46,7 +50,7 @@ class SubCategoryController extends Controller
      */
     public function show(Sub_Category $sub_Category)
     {
-        //
+        return $sub_Category;
     }
 
     /**
@@ -81,5 +85,71 @@ class SubCategoryController extends Controller
     public function destroy(Sub_Category $sub_Category)
     {
         //
+    }
+    public function single( $sub_Category)
+    {
+      $sessionLang=Session::get('lang');
+
+      switch ($sessionLang) {
+        case 'en':
+        $data=DB::table('products')
+        ->join('product_images','products.id','product_images.product_id')
+        ->where('sub_category_id',$sub_Category)
+        ->select(
+        'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr',
+        'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','products.sold_price_dolar','products.sold_price_euro','products.sold_price_kron','products.sub_category_id',
+        'product_images.id','product_images.path','product_images.product_id')
+        ->groupBy('product_images.product_id')
+        ->get();
+
+        return view('Category.Category')->with('products',$data);
+          break;
+
+          case 'du':
+          $data=DB::table('products')
+          ->join('product_images','products.id','product_images.product_id')
+          ->where('sub_category_id',$sub_Category)
+          ->select(
+          'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr',
+          'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','products.sold_price_dolar','products.sold_price_euro','products.sold_price_kron','products.sub_category_id',
+          'product_images.id','product_images.path','product_images.product_id')
+          ->groupBy('product_images.product_id')
+          ->get();
+
+          return view('Category.Category_du')->with('products',$data);
+            break;
+
+            case 'ar':
+            $data=DB::table('products')
+            ->join('product_images','products.id','product_images.product_id')
+            ->where('sub_category_id',$sub_Category)
+            ->select(
+            'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr',
+            'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','products.sold_price_dolar','products.sold_price_euro','products.sold_price_kron','products.sub_category_id',
+            'product_images.id','product_images.path','product_images.product_id')
+            ->groupBy('product_images.product_id')
+            ->get();
+
+            return view('Category.Category_ar')->with('products',$data);
+              break;
+
+        default:
+        $data=DB::table('products')
+        ->join('product_images','products.id','product_images.product_id')
+        ->where('sub_category_id',$sub_Category)
+        ->select(
+        'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr',
+        'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','products.sold_price_dolar','products.sold_price_euro','products.sold_price_kron','products.sub_category_id',
+        'product_images.id','product_images.path','product_images.product_id')
+        ->groupBy('product_images.product_id')
+        ->get();
+
+        return view('Category.Category')->with('products',$data);
+          break;
+      }
+
+      // $products=Product::where('sub_category_id',$sub_Category)->get();
+      // $images=ProductImages::where('product_id',$products['id'])->get();
+
     }
 }
