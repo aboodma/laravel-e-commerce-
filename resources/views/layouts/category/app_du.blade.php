@@ -29,12 +29,13 @@
 
     <!-- Libs CSS
 	============================================ -->
-    <link rel="stylesheet" href="{{ asset('/css/bootstrap/css/bootstrap.min.css')}}">
-	<link href="{{ asset('/css/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
-	<link href="{{ asset('/js/datetimepicker/bootstrap-datetimepicker.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('/js/owl-carousel/owl.carousel.css')}}" rel="stylesheet">
-	<link href="{{ asset('/css/themecss/lib.css')}}" rel="stylesheet">
-	<link href="{{ asset('/js/jquery-ui/jquery-ui.min.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('/css/bootstrap/css/bootstrap.min.css')}}">
+<link href="{{ asset('/css/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+<link href="{{ asset('/js/datetimepicker/bootstrap-datetimepicker.min.css')}}" rel="stylesheet">
+  <link href="{{ asset('/js/owl-carousel/owl.carousel.css')}}" rel="stylesheet">
+<link href="{{ asset('/css/themecss/lib.css')}}" rel="stylesheet">
+<link href="{{ asset('/js/jquery-ui/jquery-ui.min.css')}}" rel="stylesheet">
+<script type="text/javascript" src="{{ asset('/js/jquery-2.2.4.min.js')}}"></script>
 
 	<!-- Theme CSS
 	============================================ -->

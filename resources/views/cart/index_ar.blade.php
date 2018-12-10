@@ -187,72 +187,7 @@
                         </div>
                       </a>
 
-                      <ul class="tab-content content dropdown-menu pull-right shoppingcart-box" role="menu">
 
-                        <li>
-                          <table class="table table-striped">
-                            <tbody>
-                              <tr>
-                                <td class="text-center" style="width:70px">
-                                  <a href="product.html"> <img src="/image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
-                                </td>
-                                <td class="text-left"> <a class="cart_product_name" href="product.html">Filet Mign</a> </td>
-                                <td class="text-center"> x1 </td>
-                                <td class="text-center"> $1,202.00 </td>
-                                <td class="text-right">
-                                  <a href="product.html" class="fa fa-edit"></a>
-                                </td>
-                                <td class="text-right">
-                                  <a onclick="cart.remove('2');" class="fa fa-times fa-delete"></a>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="text-center" style="width:70px">
-                                  <a href="product.html"> <img src="/image/demo/shop/product/resize/3.jpg" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
-                                </td>
-                                <td class="text-left"> <a class="cart_product_name" href="product.html">Canon EOS 5D</a> </td>
-                                <td class="text-center"> x1 </td>
-                                <td class="text-center"> $60.00 </td>
-                                <td class="text-right">
-                                  <a href="product.html" class="fa fa-edit"></a>
-                                </td>
-                                <td class="text-right">
-                                  <a onclick="cart.remove('1');" class="fa fa-times fa-delete"></a>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </li>
-                        <li>
-                          <div>
-                            <table class="table table-bordered">
-                              <tbody>
-                                <tr>
-                                  <td class="text-left"><strong>Sub-Total</strong>
-                                  </td>
-                                  <td class="text-right">$1,060.00</td>
-                                </tr>
-                                <tr>
-                                  <td class="text-left"><strong>Eco Tax (-2.00)</strong>
-                                  </td>
-                                  <td class="text-right">$2.00</td>
-                                </tr>
-                                <tr>
-                                  <td class="text-left"><strong>VAT (20%)</strong>
-                                  </td>
-                                  <td class="text-right">$200.00</td>
-                                </tr>
-                                <tr>
-                                  <td class="text-left"><strong>Total</strong>
-                                  </td>
-                                  <td class="text-right">$1,262.00</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <p class="text-right"> <a class="btn view-cart" href="cart.html"><i class="fa fa-shopping-cart"></i>View Cart</a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" href="checkout.html"><i class="fa fa-share"></i>Checkout</a> </p>
-                          </div>
-                        </li>
-                      </ul>
                     </div>
                     <!--//cart-->
                   </li>
@@ -396,7 +331,7 @@
 
 
                           </div>
-                          <div class="row">
+                          <!-- <div class="row">
                             <div class="col-md-12">
                               <div class="column">
                                 <a href="#" class="title-submenu">Result</a>
@@ -430,7 +365,7 @@
 
                               </div>
                             </div>
-                          </div>
+                          </div> -->
 
                         </div>
                       </div>
@@ -478,6 +413,9 @@
   				<div class="col-sm-4">
 
   				</div>
+          <form id="orderform">
+            {{csrf_field()}}
+
   				<div class="col-sm-12">
   				  <div class="row">
   					<div class="col-sm-6">
@@ -490,7 +428,7 @@
                 @foreach($PageData['shipping'] as $ship)
   							<div class="radio">
   							  <label>
-  								<input type="radio" checked="" value="{{$ship->id}}" data-ship-fee="{{$ship->code}}" id="ship_id" onclick="changeVal('{{$ship->id}}')"  name="ship_id">
+  								<input required type="radio" checked="" value="{{$ship->id}}" data-ship-fee="{{$ship->code}}" id="ship_id" onclick="changeVal('{{$ship->id}}')"  name="ship_id">
   								{{$ship->name_ar}}</label>
   							</div>
   							@endforeach
@@ -507,7 +445,7 @@
                 @foreach($PageData['payments'] as $payment)
   							<div class="radio">
   							  <label>
-  								<input type="radio" checked="" value="{{$payment->id}}" onclick="changeValP('{{$payment->code}}')" data-payment-fee="{{$payment->code}}" name="payment_id">{{$payment->name}}</label>
+  								<input required type="radio" checked="" value="{{$payment->id}}" onclick="changeValP('{{$payment->code}}')" data-payment-fee="{{$payment->code}}" name="payment_id">{{$payment->name}}</label>
   							</div>
                 @endforeach
 
@@ -562,7 +500,7 @@
   										<input type="text" name="quantity" value="{{$product->quantity}}" size="1" class="form-control">
   										<span class="input-group-btn">
   										<button type="submit" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Update"><i class="fa fa-refresh"></i></button>
-  										<button type="button" data-toggle="tooltip" title="" class="btn btn-danger" onclick="" data-original-title="Remove"><i class="fa fa-times-circle"></i></button>
+  										<button type="button" data-toggle="tooltip" title="" class="btn btn-danger" onclick="deletefromcart('{{$product->id}}')" data-original-title="Remove"><i class="fa fa-times-circle"></i></button>
   										</span></div></td>
   									<td class="text-right">{{$product->currency}}{{$product->price}}</td>
   									<td class="text-right total"  data="{{$total=$product->price*$product->quantity}}"> <input type="hidden" name="totals[]" id="totals[]" value=""> {{$product->currency}}{{$total=$product->price*$product->quantity}}</td>
@@ -609,14 +547,15 @@
   							<textarea rows="4" class="form-control" id="confirm_comment" name="comments"></textarea>
   							<br>
   							<label class="control-label" for="confirm_agree">
-  							  <input type="checkbox" checked="checked" value="1" required="" class="validate required" id="confirm_agree" name="confirm agree">
+  							  <input type="checkbox" checked="checked" value="1" required="" class="validate required" id="confirm_agree" name="confirm agree" required>
                   <!-- <span>I have read and agree to the <a class="agree" href="#"><b>Terms &amp; Conditions</b></a></span> </label> -->
                   <span>لقد فرأت<a class="agree" href="#"><b>الشروط والقوانين</b></a>و أوافق عليه  </span> </label>
 
   							<div class="buttons">
   							  <div class="pull-right">
-  								<input type="button" class="btn btn-primary" data-toggle="modal" href="#ignismyModal"value="إتمام الشراء ">
+  								<input type="submit" class="btn btn-primary" value="إتمام الشراء ">
   							  </div>
+                            </form>
   							</div>
   						  </div>
   					  </div>
@@ -629,4 +568,23 @@
 
   		</div>
   	</div>
+    <script>
+      $(document).ready(function () {
+        $('#orderform').submit(function (e) {
+            e.preventDefault();
+            var Data = $("#orderform").serialize();
+            $.ajax({
+              url:'/cart/order',
+              type:"POST",
+              data:Data,
+              success: function (res){
+                if (res == "1") {
+                  $('#ignismyModal').modal('show');
+                  
+                }
+              }
+            })
+        })
+      })
+    </script>
 @endsection

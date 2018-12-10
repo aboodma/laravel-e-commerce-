@@ -16,13 +16,21 @@ class CustomerController extends Controller
      */
     public function index()
     {
+      $customer_id=session('customer_id');
+
       $settings=DB::table('settings')->get();
 
       $menus=DB::table('categories')->get();
       $submenus=DB::table('sub__categories')->get();
 $categories=['menus'=>$menus,'submenu'=>$submenus];
       $sessionLang=Session::get('lang');
+      if ($customer_id != null) {
+        $message=1;
+        $PageData=['categories'=>$categories,'settings'=>$settings,'message'=>$message];
+      }else {
       $PageData=['categories'=>$categories,'settings'=>$settings];
+      }
+
       switch ($sessionLang) {
         case 'en':
           return view('Customer.index')->with('PageData',$PageData);
@@ -50,7 +58,7 @@ $categories=['menus'=>$menus,'submenu'=>$submenus];
       $menus=DB::table('categories')->get();
       $submenus=DB::table('sub__categories')->get();
       $countries=DB::table('countries')->get();
-      
+
 $categories=['menus'=>$menus,'submenu'=>$submenus];
       $sessionLang=Session::get('lang');
       $PageData=['categories'=>$categories,'settings'=>$settings,'countries'=>$countries];
@@ -146,5 +154,26 @@ $categories=['menus'=>$menus,'submenu'=>$submenus];
         echo "Not Login";
       }
       return $islogin;
+    }
+    public function Login(Request $request)
+    {
+      $customer=DB::table('customers')->where([
+        ['email', '=', $request->email],
+        ['password','=',$request->password],
+      ])->get();
+
+
+      $res= $customer->count();
+
+      if ($res = 1 ) {
+        foreach ($customer as $key) {
+          $id = $key->id;
+        }
+
+      SESSION::put('customer_id',$id);
+      echo 'this customer id'. session('customer_id');
+      }else {
+        return 0;
+      }
     }
 }

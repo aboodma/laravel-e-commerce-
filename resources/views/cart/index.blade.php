@@ -393,7 +393,7 @@ width: 57%;"/>
 
 
                         </div>
-                        <div class="row">
+                        <!-- <div class="row">
                           <div class="col-md-12">
                             <div class="column">
                               <a href="#" class="title-submenu">Result</a>
@@ -427,7 +427,7 @@ width: 57%;"/>
 
                             </div>
                           </div>
-                        </div>
+                        </div> -->
 
                       </div>
                     </div>
@@ -475,6 +475,8 @@ width: 57%;"/>
   				<div class="col-sm-4">
 
   				</div>
+          <form id="orderform">
+            {{csrf_field()}}
   				<div class="col-sm-12">
   				  <div class="row">
   					<div class="col-sm-6">
@@ -559,7 +561,7 @@ width: 57%;"/>
   										<input type="text" name="quantity" value="{{$product->quantity}}" size="1" class="form-control">
   										<span class="input-group-btn">
   										<button type="submit" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Update"><i class="fa fa-refresh"></i></button>
-  										<button type="button" data-toggle="tooltip" title="" class="btn btn-danger" onclick="" data-original-title="Remove"><i class="fa fa-times-circle"></i></button>
+  										<button type="button" data-toggle="tooltip" title="" class="btn btn-danger" onclick="deletefromcart('{{$product->id}}')" data-original-title="Remove"><i class="fa fa-times-circle"></i></button>
   										</span></div></td>
   									<td class="text-right">{{$product->currency}}{{$product->price}}</td>
   									<td class="text-right total"  data="{{$total=$product->price*$product->quantity}}"> <input type="hidden" name="totals[]" id="totals[]" value=""> {{$product->currency}}{{$total=$product->price*$product->quantity}}</td>
@@ -610,8 +612,9 @@ width: 57%;"/>
   							  <span>I have read and agree to the <a class="agree" href="#"><b>Terms &amp; Conditions</b></a></span> </label>
   							<div class="buttons">
   							  <div class="pull-right">
-  								<input type="button" class="btn btn-primary" data-toggle="modal" href="#ignismyModal" value="Confirm Order">
+  								<input type="submit" class="btn btn-primary" value="Confirm Order">
   							  </div>
+                  </form>
   							</div>
   						  </div>
   					  </div>
@@ -624,4 +627,23 @@ width: 57%;"/>
 
   		</div>
   	</div>
+    <script>
+      $(document).ready(function () {
+        $('#orderform').submit(function (e) {
+            e.preventDefault();
+            var Data = $("#orderform").serialize();
+            $.ajax({
+              url:'/cart/order',
+              type:"POST",
+              data:Data,
+              success: function (res){
+                if (res == "1") {
+                  $('#ignismyModal').modal('show');
+
+                }
+              }
+            })
+        })
+      })
+    </script>
 @endsection

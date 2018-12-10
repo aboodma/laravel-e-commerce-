@@ -9,15 +9,15 @@
 
 
 	// Cart add remove functions
-	var cart = {
-
-		'add': function(product_id, quantity,image,name,price,) {
-			addProductNotice('Product added to Cart', '<img src="'+image+'" alt="">', '<h3><a href="#">'+name+'</a> added to <a href="/cart/show">shopping cart</a>!</h3>', 'success');
-			var data={product_id:'product_id'	,quantity:'quantity'};
-			$.get('/cart/'+product_id+'/'+quantity+'/'+price+'/'+name,function(res){alert(res);});
-
-	}
-}
+// 	var cart = {
+//
+// 		'add': function(product_id, quantity,image,name,price,) {
+// 			addProductNotice('Product added to Cart', '<img src="'+image+'" alt="">', '<h3><a href="#">'+name+'</a> added to <a href="/cart/show">shopping cart</a>!</h3>', 'success');
+// 			var data={product_id:'product_id'	,quantity:'quantity'};
+// 			$.get('/cart/'+product_id+'/'+quantity+'/'+price+'/'+name,function(res){alert(res);});
+//
+// 	}
+// }
 var cart = {
 
 	'addpro': function(product_id, quantity,image,name,price) {
@@ -45,6 +45,9 @@ $("#error_gr").append("<h5 style=' background: red; color:white;'><strong>Please
 
 
 
+
+
+
 	/* ---------------------------------------------------
 		jGrowl – jQuery alerts and message box
 	-------------------------------------------------- */
@@ -60,3 +63,6 @@ $("#error_gr").append("<h5 style=' background: red; color:white;'><strong>Please
 			theme: type
 		});
 	}
+	function deletefromcart(id,){
+			$.get('/cart/delete/'+id);
+		}

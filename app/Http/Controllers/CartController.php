@@ -35,8 +35,17 @@ class CartController extends Controller
 
 
     }
+    public function deleteCart($id)
+    {
+    $cart = new Cart();
+    $cart->remove($id);
+    }
     public function show()
     {
+      $customervalid=session('customer_id');
+      if ($customervalid != null) {
+
+
        $cart = new Cart();
        $cart2=$cart->getItems();
       $sessionLang=Session::get('lang');
@@ -62,7 +71,32 @@ class CartController extends Controller
         return view('cart.index')->with('PageData',$PageData);
           break;
       }
+    }else {
 
+    }
+    $settings=DB::table('settings')->get();
+
+    $menus=DB::table('categories')->get();
+    $submenus=DB::table('sub__categories')->get();
+$categories=['menus'=>$menus,'submenu'=>$submenus];
+    $sessionLang=Session::get('lang');
+    $PageData=['categories'=>$categories,'settings'=>$settings,'error'=>'1'];
+    switch ($sessionLang) {
+      case 'en':
+        return view('Customer.index')->with('PageData',$PageData);
+        break;
+        case 'ar':
+          return view('Customer.index_ar')->with('PageData',$PageData);
+          break;
+          case 'du':
+            return view('Customer.index_du')->with('PageData',$PageData);
+            break;
+
+      default:
+      return view('Customer.index')->with('PageData',$PageData);
+
+        break;
+    }
 
     }
     public function flash()
@@ -98,5 +132,59 @@ class CartController extends Controller
           break;
       }
 
+    }
+    public function insert(Request $request)
+    {
+      $customer_id = session('customer_id');
+      // return $request;
+    $order =  DB::table('orders')->insert([
+        'customer_id'=>$customer_id,
+        'shiping_id'=>$request->ship_id,
+        'payment_id'=>$request->payment_id,
+        'coupon_id'=>$request->coupon,
+        'is_paied'=>'0'
+
+      ]);
+      $order_id = DB::getPdo()->lastInsertId();
+      $cart = new Cart();
+      $cart2=$cart->getItems();
+      if ($cart2->count() == 1) {
+        // return
+         $cart2=$cart->getItems();
+         foreach ($cart2 as $value) {
+           $size_id = $value->id;
+           $product_id = $value->product_id;
+           $quantity = $value->quantity;
+           $currency = $value->currency;
+           $order_items=DB::table('order_items')->insert([
+             'order_id'=>$order_id,
+             'product_id'=>$product_id,
+             'quantity'=>$quantity,
+             'currency'=>$currency,
+             'size_id'=>$size_id
+           ]);
+         }
+
+
+      }else{
+        $cart2=$cart->getItems();
+        foreach ($cart2 as $value) {
+          $size_id = $value->id;
+          $product_id = $value->product_id;
+          $quantity = $value->quantity;
+          $currency = $value->currency;
+          $order_items=DB::table('order_items')->insert([
+            'order_id'=>$order_id,
+            'product_id'=>$product_id,
+            'quantity'=>$quantity,
+            'currency'=>$currency,
+            'size_id'=>$size_id
+          ]);
+        }
+
+
+
+      }
+      echo "1";
     }
 }

@@ -301,6 +301,13 @@
   <!-- //end Navbar switcher -->
   </header>
 <div class="main-container container">
+  @if(isset($PageData['error']))
+  <div class="alert alert-danger alert-dismissible fade in">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      If You have Account Please <strong> Login </strong>  First
+      If You Dont Have Account Create Your Account Now Quickly From Here <strong> <a href="/Register">Register</a></strong>
+    </div>
+    @endif
 		<ul class="breadcrumb">
 
 		</ul>
@@ -321,18 +328,19 @@
 								</div>
 							</div>
 
-							<form action="#" method="post" enctype="multipart/form-data">
+              <form  enctype="multipart/form-data" id="Customerlogin">
+                {{csrf_field()}}
 								<div class="col-sm-6 customer-login">
 									<div class="well">
 										<h2><i class="fa fa-file-text-o" aria-hidden="true"></i> Aanmelden</h2>
 
 										<div class="form-group">
 											<label class="control-label " for="input-email">E-mailadres</label>
-											<input type="text" name="email" value="" id="input-email" class="form-control">
+											<input type="text" name="email" value="" id="input-email" class="form-control" required>
 										</div>
 										<div class="form-group">
 											<label class="control-label " for="input-password">Wachtwoord</label>
-											<input type="password" name="password" value="" id="input-password" class="form-control">
+											<input type="password" name="password" value="" id="input-password" class="form-control" required>
 										</div>
 									</div>
 									<div class="bottom-form">

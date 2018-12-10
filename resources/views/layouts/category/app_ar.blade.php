@@ -35,6 +35,7 @@
     <link href="{{ asset('/js/owl-carousel/owl.carousel.css')}}" rel="stylesheet">
 	<link href="{{ asset('/css/themecss/lib.css')}}" rel="stylesheet">
 	<link href="{{ asset('/js/jquery-ui/jquery-ui.min.css')}}" rel="stylesheet">
+  <script type="text/javascript" src="{{ asset('/js/jquery-2.2.4.min.js')}}"></script>
 
 	<!-- Theme CSS
 	============================================ -->
@@ -226,7 +227,6 @@
 <!-- Include Libs & Plugins
 ============================================ -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript" src="/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/owl-carousel/owl.carousel.js"></script>
 <script type="text/javascript" src="/js/themejs/libs.js"></script>
@@ -241,14 +241,14 @@
 
 <!-- Theme files
 ============================================ -->
-<script type="text/javascript" src="/js/themejs/application.js"></script>
-<script type="text/javascript" src="/js/themejs/homepage.js"></script>
-<script type="text/javascript" src="/js/themejs/so_megamenu.js"></script>
-<script type="text/javascript" src="/js/themejs/addtocart.js"></script>
-<script type="text/javascript" src="/js/themejs/pathLoader.js"></script>
+<script type="text/javascript" src="{{ asset('/js/themejs/application.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/themejs/homepage.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/themejs/so_megamenu.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/themejs/addtocart.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/themejs/pathLoader.js') }}"></script>
 <!--<script type="text/javascript" src="/js/themejs/toppanel.js"></script>-->
 <script type="text/javascript" src="{{ asset('/js/scripts.js') }}"></script>
-<script type="text/javascript" src="/js/themejs/cpanel.js"></script>
+<script type="text/javascript" src="{{ asset('/js/themejs/cpanel.js') }}"></script>
 <script type="text/javascript">
 <!--
 var $typeheader = 'header-home5';
