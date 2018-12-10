@@ -1312,7 +1312,7 @@ $(document).ready(function(){
             '</div>'
         });
     });
-   
+
 
     /*=====================
      18. Color Picker
@@ -1430,5 +1430,19 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").classList.remove('open-side');
 }
-
-
+/*=====================
+ 20.Change language
+ ==========================*/
+function ChangeLang(lang){
+  $.get('/lang/?lang='+lang,function (resault) {
+    location.reload();
+  })
+}
+/*=====================
+ 20.Change Currency
+ ==========================*/
+function ChangeCurrency(currency){
+  $.get('/currency/?currency='+currency,function (resault) {
+    location.reload();
+  })
+}

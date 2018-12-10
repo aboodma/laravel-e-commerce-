@@ -1,578 +1,608 @@
-@extends('layouts.app_du')
-@section('title', $data['productd'][0]['product_name_gr'])
+@extends('layouts.singleProduct.app_du')
+@section('title',$data['settings'][0]->site_name_gr)
+@section('keywords',$data['settings'][0]->keywords_gr)
+@section('description',$data['settings'][0]->description_gr)
+@section('phone',$data['settings'][0]->phone)
+@section('address',$data['settings'][0]->adress_gr)
+@section('mail',$data['settings'][0]->mail)
+@section('facebook',$data['settings'][0]->facebook)
+@section('instagram',$data['settings'][0]->instagram)
 @section('content')
-
-    <!-- breadcrumb start -->
-    <div class="breadcrumb-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="page-title text-center">
-                        <h1>{{$data['productd'][0]['product_name_gr']}}</h1>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <nav aria-label="breadcrumb" class="theme-breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item active" aria-current="page"><a href="">البسة رجالية</a></li>
-                            <li class="breadcrumb-item " aria-current="page"> <a href="">رجالي</a></li>
-                            <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
+<body class="res layout-subpage">
+    <div id="wrapper" class="wrapper-full ">
+	<!-- Header Container  -->
+  <div class="ip-header">
+    <h1 class="ip-logo">
+      <a href="/">
+        <img src="/image/demo/logos/theme_logo.png" alt="SW Shoppy">
+      </a>
+    </h1>
+    <div class="ip-loader">
+      <svg class="ip-inner" width="60px" height="60px" viewBox="0 0 80 80">
+        <path class="ip-loader-circlebg" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"></path>
+        <path id="ip-loader-circle" class="ip-loader-circle" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" style="stroke-dashoffset: 0; stroke-dasharray: 192.617;"></path>
+      </svg>
     </div>
-    <!-- breadcrumb End -->
+  </div>
+  <!-- End Preloading Screen -->
 
-
-    <!-- section start -->
-    <section>
-        <div class="collection-wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-1 col-sm-2 col-xs-12">
-                        <div class="row">
-                            <div class="col-12 p-0">
-                                <div class="slider-right-nav">
-                                    @foreach($data['images'] as $image)
-                                    <div>
-                                        <img src="{{getenv('APP_URL')}}/{{$image['path']}}" alt="{{$image['path']}}" class="img-fluid">
-                                    </div>
-                                   @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 col-sm-10 col-xs-12  order-up">
-                        <div class="product-right-slick">
-                            @foreach($data['images'] as $image)
-                                <div>
-                                    <img src="{{getenv('APP_URL')}}/{{$image['path']}}" alt="{{$image['path']}}" class="img-fluid image_zoom_cls-0">
-                                </div>
-                            @endforeach
-
-                        </div>
-                    </div>
-                    <div class="col-lg-6 rtl-text">
-                        <div class="product-right">
-                            <h2> <?= $data['productd'][0]['product_name_gr']?></h2>
-                            <h4><del>${{$data['productd'][0]['price_dolar']}}</del><span>55% off</span></h4>
-                            <h3>${{$data['productd'][0]['sold_price_dolar']}} </h3>
-                            <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
-                            <div class="product-description border-product">
-                                <h6 class="product-title">select size
-                                    <span><a href="#" data-toggle="modal" data-target="#sizemodal">size chart</a></span></h6>
-                                <div class="modal fade" id="sizemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Sheer Straight Kurta</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img src="../assets/images/size-chart.jpg" alt="" class="img-fluid">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="size-box">
-                                    <ul>
-                                        @foreach($data['sizes'] as $size)
-                                        <li><a href="#">{{$size['size_name']}}</a></li>
-                                            @endforeach
-                                    </ul>
-                                </div>
-                                <h6 class="product-title">quantity</h6>
-                                <div class="qty-box">
-                                    <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <button type="button" class="btn quantity-left-minus" data-type="minus" data-field="">
-                                            <i class="icon-angle-left"></i>
-                                        </button>
-                                    </span>
-                                        <input type="text"  name="quantity" class="form-control input-number" value="1">
-                                        <span class="input-group-prepend">
-                                        <button type="button" class="btn quantity-right-plus" data-type="plus" data-field="">
-                                            <i class="icon-angle-right"></i>
-                                        </button>
-                                    </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-buttons">
-                                <a href="#"  class="btn btn-solid">add to cart</a>
-                                <a href="#" class="btn btn-solid">buy now</a>
-                            </div>
-                            <div class="border-product">
-                                <h6 class="product-title">product details</h6>
-                                <p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,</p>
-                            </div>
-                            <div class="border-product">
-                                <h6 class="product-title">share it</h6>
-                                <div class="product-icon">
-                                    <ul class="product-social">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                                    </ul>
-                                    <form class="d-inline-block">
-                                        <button class="wishlist-btn"><i class="fa fa-heart"></i><span class="title-font">Add To WishList</span></button>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="border-product">
-
-
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-6 product-related">
-                                                <h2>Colors</h2>
-                                            </div>
-                                        </div>
-                                        <div class="row search-product">
-                                            <div class="col-xl-2 col-md-2 col-sm-4">
-                                                <div class="product-box">
-                                                    <div class="img-wrapper">
-                                                        <div class="front">
-                                                            <a href="#"><img src="../assets/images/pro3/33.jpg" class="img-fluid" alt=""></a>
-                                                        </div>
-                                                        <div class="back">
-                                                            <a href="#"><img src="../assets/images/pro3/34.jpg" class="img-fluid" alt=""></a>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-2 col-md-2 col-sm-4">
-                                                <div class="product-box">
-                                                    <div class="img-wrapper">
-                                                        <div class="front">
-                                                            <a href="#"><img src="../assets/images/pro3/1.jpg" class="img-fluid" alt=""></a>
-                                                        </div>
-                                                        <div class="back">
-                                                            <a href="#"><img src="../assets/images/pro3/2.jpg" class="img-fluid" alt=""></a>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-2 col-md-2 col-sm-4">
-                                                <div class="product-box">
-                                                    <div class="img-wrapper">
-                                                        <div class="front">
-                                                            <a href="#"><img src="../assets/images/pro3/27.jpg" class="img-fluid" alt=""></a>
-                                                        </div>
-                                                        <div class="back">
-                                                            <a href="#"><img src="../assets/images/pro3/28.jpg" class="img-fluid" alt=""></a>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-2 col-md-2 col-sm-4">
-                                                <div class="product-box">
-                                                    <div class="img-wrapper">
-                                                        <div class="front">
-                                                            <a href="#"><img src="../assets/images/pro3/35.jpg" class="img-fluid" alt=""></a>
-                                                        </div>
-                                                        <div class="back">
-                                                            <a href="#"><img src="../assets/images/pro3/36.jpg" class="img-fluid" alt=""></a>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-2 col-md-2 col-sm-4">
-                                                <div class="product-box">
-                                                    <div class="img-wrapper">
-                                                        <div class="front">
-                                                            <a href="#"><img src="../assets/images/pro3/2.jpg" class="img-fluid" alt=""></a>
-                                                        </div>
-                                                        <div class="back">
-                                                            <a href="#"><img src="../assets/images/pro3/1.jpg" class="img-fluid" alt=""></a>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                {{--<div class="timer">--}}
-                                    {{--<p id="demo">--}}
-                                            {{--<span>25--}}
-                                                {{--<span class="padding-l">:</span>--}}
-                                                {{--<span class="timer-cal">Days</span>--}}
-                                            {{--</span>--}}
-                                        {{--<span>22--}}
-                                                {{--<span class="padding-l">:</span>--}}
-                                                {{--<span class="timer-cal">Hrs</span>--}}
-                                            {{--</span>--}}
-                                        {{--<span>13--}}
-                                                {{--<span class="padding-l">:</span>--}}
-                                                {{--<span class="timer-cal">Min</span>--}}
-                                            {{--</span>--}}
-                                        {{--<span>57--}}
-                                                {{--<span class="timer-cal">Sec</span>--}}
-                                            {{--</span>--}}
-                                    {{--</p>--}}
-                                {{--</div>--}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <!-- TopBar Container  -->
+  <div class="topbar hidden-xs">
+    <div class="container">
+      <div class="row">
+        <div class="block-policy-top ">
+          <div class="policy policy1 col-sm-4 col-xs-12">
+            <div class="policy-inner">
+              <i class="ico-policy"></i>
+              <h4>30 dagen terug</h4>
+              <span>Geldteruggarantie</span>
             </div>
+          </div>
+          <div class="policy policy2 col-sm-4 col-xs-12">
+            <div class="policy-inner">
+            <i class="ico-policy"></i>
+            <h4>gratis verzending voor $ 30</h4>
+            <span>bij alle bestellingen van meer dan $ 99</span>
+            </div>
+          </div>
+          <div class="policy policy3 col-sm-4 col-xs-12">
+            <div class="policy-inner">
+            <i class="ico-policy"></i>
+            <h4>Veilig winkelen</h4>
+            <span>Bespaar tot 50% nu</span>
+            </div>
+          </div>
+
         </div>
-    </section>
-    <!-- Section ends -->
 
+      </div>
+    </div>
 
-    <!-- product-tab starts -->
-    <section class="tab-product m-0">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-lg-12">
-                    <ul class="nav nav-tabs nav-material" id="top-tab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="top-home-tab" data-toggle="tab" href="#top-home" role="tab" aria-selected="true">Description</a>
-                            <div class="material-border"></div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-top-tab" data-toggle="tab" href="#top-profile" role="tab" aria-selected="false">Details</a>
-                            <div class="material-border"></div>
-                        </li>
-                        {{--<li class="nav-item">--}}
-                            {{--<a class="nav-link" id="contact-top-tab" data-toggle="tab" href="#top-contact" role="tab" aria-selected="false">Video</a>--}}
-                            {{--<div class="material-border"></div>--}}
-                        {{--</li>--}}
-                        {{--<li class="nav-item">--}}
-                            {{--<a class="nav-link" id="review-top-tab" data-toggle="tab" href="#top-review" role="tab" aria-selected="false">Write Review</a>--}}
-                            {{--<div class="material-border"></div>--}}
-                        {{--</li>--}}
+  </div>
+  <!-- //TopBar Container  -->
+
+  <!-- Header Container  -->
+<header id="header" class="layout-boxed variantleft type_5">
+
+    <!-- Header Top -->
+    <div class="header-top compact-hidden">
+      <div class="container">
+        <div class="row">
+          <div class="header-top-left form-inline col-md-6 col-sm-4 col-xs-12 compact-hidden">
+            <div class="form-group languages-block ">
+              <form action="#" method="post" enctype="multipart/form-data" id="bt-language">
+                <a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
+                  <img src="/image/demo/flags/gb.png" alt="English" title="English">
+                  <span class="">English</span>
+                  <span class="fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li> <a onclick="ChangeLang('ar')" href="#"> <img class="image_flag" src="/image/demo/flags/lb.png" alt="Arabic" title="Arabic" /> العربية </a> </li>
+                  <li><a onclick="ChangeLang('en')" href="#"><img class="image_flag" src="/image/demo/flags/gb.png" alt="English" title="English" /> English </a></li>
+                  <li><a onclick="ChangeLang('du')" href="#"><img class="image_flag" src="/image/demo/flags/gr.png" alt="Dutch" title="Dutch" /> Dutch </a></li>
+                </ul>
+              </form>
+            </div>
+
+            <div class="form-group currencies-block">
+              <form action="#" method="post" enctype="multipart/form-data" id="currency">
+                <a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
+                  <span class="icon icon-credit "></span> US Dollar <span class="fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu btn-xs">
+                  <li> <a onclick="ChangeCurrency('€')" href="#">(€)&nbsp;Euro</a></li>
+                  <li> <a onclick="ChangeCurrency('kr')" href="#">(kr)&nbsp;Swedish Krona	</a></li>
+                  <li> <a onclick="ChangeCurrency('$')" href="#">($)&nbsp;US Dollar	</a></li>
+                </ul>
+              </form>
+            </div>
+          </div>
+          <div class="header-top-right collapsed-block text-right  col-md-6 col-sm-8 col-xs-12 compact-hidden">
+
+            <div class="tabBlock" id="TabBlock-1">
+              <ul class="top-link list-inline">
+                <!-- <li class="checkout"><a href="#" class="top-link-checkout" title="Checkout"><i class="fa fa-check-square-o" ></i> Checkout</a></li> -->
+                <li class="signin"><a href="/login" class="top-link-checkout" title="Aanmelden"><i class="fa fa-lock" ></i>Aanmelden</a></li>
+                <li class="shopping_cart">
+
+                  <!--Cart-->
+                  <div id="cart" class=" btn-group btn-shopping-cart">
+                      <a data-loading-text="Loading..." class="top_cart"  href="/cart/show">
+                      <div class="shopcart">
+                        <span class="handle pull-left"></span>
+
+                      </div>
+                    </a>
+
+                    <ul class="tab-content content dropdown-menu pull-right shoppingcart-box" role="menu">
+
+                      <li>
+                        <table class="table table-striped">
+                          <tbody>
+                            <tr>
+                              <td class="text-center" style="width:70px">
+                                <a href="product.html"> <img src="/image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
+                              </td>
+                              <td class="text-left"> <a class="cart_product_name" href="product.html">Filet Mign</a> </td>
+                              <td class="text-center"> x1 </td>
+                              <td class="text-center"> $1,202.00 </td>
+                              <td class="text-right">
+                                <a href="product.html" class="fa fa-edit"></a>
+                              </td>
+                              <td class="text-right">
+                                <a onclick="cart.remove('2');" class="fa fa-times fa-delete"></a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center" style="width:70px">
+                                <a href="product.html"> <img src="/image/demo/shop/product/resize/3.jpg" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
+                              </td>
+                              <td class="text-left"> <a class="cart_product_name" href="product.html">Canon EOS 5D</a> </td>
+                              <td class="text-center"> x1 </td>
+                              <td class="text-center"> $60.00 </td>
+                              <td class="text-right">
+                                <a href="product.html" class="fa fa-edit"></a>
+                              </td>
+                              <td class="text-right">
+                                <a onclick="cart.remove('1');" class="fa fa-times fa-delete"></a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </li>
+                      <li>
+                        <div>
+                          <table class="table table-bordered">
+                            <tbody>
+                              <tr>
+                                <td class="text-left"><strong>Sub-Total</strong>
+                                </td>
+                                <td class="text-right">$1,060.00</td>
+                              </tr>
+                              <tr>
+                                <td class="text-left"><strong>Eco Tax (-2.00)</strong>
+                                </td>
+                                <td class="text-right">$2.00</td>
+                              </tr>
+                              <tr>
+                                <td class="text-left"><strong>VAT (20%)</strong>
+                                </td>
+                                <td class="text-right">$200.00</td>
+                              </tr>
+                              <tr>
+                                <td class="text-left"><strong>Total</strong>
+                                </td>
+                                <td class="text-right">$1,262.00</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <p class="text-right"> <a class="btn view-cart" href="cart.html"><i class="fa fa-shopping-cart"></i>View Cart</a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" href="checkout.html"><i class="fa fa-share"></i>Checkout</a> </p>
+                        </div>
+                      </li>
                     </ul>
-                    <div class="tab-content nav-material" id="top-tabContent">
-                        <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
-                        </div>
-                        <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
-                            <div class="single-product-tables">
-                                <table>
-                                    <tbody><tr>
-                                        <td>Febric</td>
-                                        <td>Chiffon</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Color</td>
-                                        <td>Red</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Material</td>
-                                        <td>Crepe printed</td>
-                                    </tr>
-                                    </tbody></table>
-                                <table>
-                                    <tbody><tr>
-                                        <td>Length</td>
-                                        <td>50 Inches</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Size</td>
-                                        <td>S, M, L .XXL</td>
-                                    </tr>
-                                    </tbody></table>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab">
-                            <div class="mt-4 text-center">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/BUWzX78Ye_8" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
-
-                            <form class="theme-form">
-                                <div class="form-row">
-                                    <div class="col-md-12 ">
-                                        <div class="media">
-                                            <label>Rating</label>
-                                            <div class="media-body ml-3">
-                                                <div class="rating three-star">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="name">Name</label>
-                                        <input type="text" class="form-control" id="name" placeholder="Enter Your name" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="email">Email</label>
-                                        <input type="text" class="form-control" id="email" placeholder="Email" required>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label for="review">Review Title</label>
-                                        <input type="text" class="form-control" id="review" placeholder="Enter your Review Subjects" required>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label for="review">Review Title</label>
-                                        <textarea class="form-control" placeholder="Wrire Your Testimonial Here" id="exampleFormControlTextarea1" rows="6"></textarea>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <button class="btn btn-solid" type="submit">Submit YOur Review</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                  </div>
+                  <!--//cart-->
+                </li>
+              </ul>
             </div>
+          </div>
         </div>
-    </section>
-    <!-- product-tab ends -->
+      </div>
+    </div>
+    <!-- //Header Top -->
+
+    <!-- Header center -->
+    <div class="header-center left">
+      <div class="container">
+        <div class="row">
+          <!-- Logo -->
+          <div class="navbar-logo col-md-offset-4 col-md-4 col-sm-12 col-xs-12">
+            <a href="/"><img src="/image/demo/logos/logo_5.png"/></a>
+          </div>
+          <!-- //end Logo -->
+
+          <!-- Search -->
+          <!-- <div id="sosearchpro" class="col-md-offset-1 col-md-3 col-sm-12 search-pro">
+            <form method="GET" action="#">
+              <div id="search0" class="search input-group">
+                <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Enter keywords to search..." name="search">
+                <span class="input-group-btn">
+                  <button type="submit" class="button-search btn btn-primary" name="submit_search"><i class="fa fa-search"></i></button>
+                </span>
+              </div>
+              <input type="hidden" name="route" value="product/search" />
+            </form>
+          </div> -->
+          <!-- //end Search -->
+
+          <!-- Secondary menu -->
 
 
-    <!-- product section start -->
-    <section class="section-b-space">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 product-related">
-                    <h2>related products</h2>
-                </div>
-            </div>
-            <div class="row search-product">
-                <div class="col-xl-2 col-md-4 col-sm-6">
-                    <div class="product-box">
-                        <div class="img-wrapper">
-                            <div class="front">
-                                <a href="#"><img src="../assets/images/pro3/33.jpg" class="img-fluid" alt=""></a>
-                            </div>
-                            <div class="back">
-                                <a href="#"><img src="../assets/images/pro3/34.jpg" class="img-fluid" alt=""></a>
-                            </div>
-                            <div class="cart-info cart-wrap">
-                                <button  title="Add to cart"><i class="icon-shopping-cart" ></i></button>
-                                <a href="javascript:void(0)"  title="Add to Wishlist"><i class="icon-heart" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i class="icon-search" aria-hidden="true"></i></a>
-                                <a href="compare.html" title="Compare"><i class="icon-reload" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <a href="product-page(no-sidebar).html"><h6>Slim Fit Cotton Shirt</h6></a>
-                            <h4>$500.00</h4>
-                            <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-md-4 col-sm-6">
-                    <div class="product-box">
-                        <div class="img-wrapper">
-                            <div class="front">
-                                <a href="#"><img src="../assets/images/pro3/1.jpg" class="img-fluid" alt=""></a>
-                            </div>
-                            <div class="back">
-                                <a href="#"><img src="../assets/images/pro3/2.jpg" class="img-fluid" alt=""></a>
-                            </div>
-                            <div class="cart-info cart-wrap">
-                                <button  title="Add to cart"><i class="icon-shopping-cart" ></i></button>
-                                <a href="javascript:void(0)"  title="Add to Wishlist"><i class="icon-heart" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i class="icon-search" aria-hidden="true"></i></a>
-                                <a href="compare.html" title="Compare"><i class="icon-reload" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <a href="product-page(no-sidebar).html"><h6>Slim Fit Cotton Shirt</h6></a>
-                            <h4>$500.00</h4>
-                            <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-md-4 col-sm-6">
-                    <div class="product-box">
-                        <div class="img-wrapper">
-                            <div class="front">
-                                <a href="#"><img src="../assets/images/pro3/27.jpg" class="img-fluid" alt=""></a>
-                            </div>
-                            <div class="back">
-                                <a href="#"><img src="../assets/images/pro3/28.jpg" class="img-fluid" alt=""></a>
-                            </div>
-                            <div class="cart-info cart-wrap">
-                                <button  title="Add to cart"><i class="icon-shopping-cart" ></i></button>
-                                <a href="javascript:void(0)"  title="Add to Wishlist"><i class="icon-heart" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i class="icon-search" aria-hidden="true"></i></a>
-                                <a href="compare.html" title="Compare"><i class="icon-reload" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <a href="product-page(no-sidebar).html"><h6>Slim Fit Cotton Shirt</h6></a>
-                            <h4>$500.00</h4>
-                            <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-md-4 col-sm-6">
-                    <div class="product-box">
-                        <div class="img-wrapper">
-                            <div class="front">
-                                <a href="#"><img src="../assets/images/pro3/35.jpg" class="img-fluid" alt=""></a>
-                            </div>
-                            <div class="back">
-                                <a href="#"><img src="../assets/images/pro3/36.jpg" class="img-fluid" alt=""></a>
-                            </div>
-                            <div class="cart-info cart-wrap">
-                                <button  title="Add to cart"><i class="icon-shopping-cart" ></i></button>
-                                <a href="javascript:void(0)"  title="Add to Wishlist"><i class="icon-heart" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i class="icon-search" aria-hidden="true"></i></a>
-                                <a href="compare.html" title="Compare"><i class="icon-reload" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <a href="product-page(no-sidebar).html"><h6>Slim Fit Cotton Shirt</h6></a>
-                            <h4>$500.00</h4>
-                            <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-md-4 col-sm-6">
-                    <div class="product-box">
-                        <div class="img-wrapper">
-                            <div class="front">
-                                <a href="#"><img src="../assets/images/pro3/2.jpg" class="img-fluid" alt=""></a>
-                            </div>
-                            <div class="back">
-                                <a href="#"><img src="../assets/images/pro3/1.jpg" class="img-fluid" alt=""></a>
-                            </div>
-                            <div class="cart-info cart-wrap">
-                                <button  title="Add to cart"><i class="icon-shopping-cart" ></i></button>
-                                <a href="javascript:void(0)"  title="Add to Wishlist"><i class="icon-heart" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i class="icon-search" aria-hidden="true"></i></a>
-                                <a href="compare.html" title="Compare"><i class="icon-reload" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <a href="product-page(no-sidebar).html"><h6>Slim Fit Cotton Shirt</h6></a>
-                            <h4>$500.00</h4>
-                            <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-md-4 col-sm-6">
-                    <div class="product-box">
-                        <div class="img-wrapper">
-                            <div class="front">
-                                <a href="#"><img src="../assets/images/pro3/28.jpg" class="img-fluid" alt=""></a>
-                            </div>
-                            <div class="back">
-                                <a href="#"><img src="../assets/images/pro3/27.jpg" class="img-fluid" alt=""></a>
-                            </div>
-                            <div class="cart-info cart-wrap">
-                                <button  title="Add to cart"><i class="icon-shopping-cart" ></i></button>
-                                <a href="javascript:void(0)"  title="Add to Wishlist"><i class="icon-heart" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i class="icon-search" aria-hidden="true"></i></a>
-                                <a href="compare.html" title="Compare"><i class="icon-reload" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <a href="product-page(no-sidebar).html"><h6>Slim Fit Cotton Shirt</h6></a>
-                            <h4>$500.00</h4>
-                            <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-    </section>
-    <!-- product section end -->
+
+      </div>
+    </div>
+    <!-- //Header center -->
+
+    <!-- Header Bottom -->
+    <div class="header-bottom">
+      <div class="container">
+        <div class="row">
+
+
+          <!-- Main menu -->
+          <div class="megamenu-hori col-xs-12 ">
+            <div class="responsive so-megamenu ">
+      <nav class="navbar-default">
+        <div class=" container-megamenu  horizontal">
+          <div class="navbar-header">
+            <button type="button" id="show-megamenu" data-toggle="collapse" class="navbar-toggle" style="left: -98px;">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+          </div>
+
+          <div class="megamenu-wrapper">
+            <span id="remove-megamenu" class="fa fa-times"></span>
+            <div class="megamenu-pattern">
+              <div class="container">
+                <ul class="megamenu " data-transition="slide" data-animationtime="250">
+
+                  <li class="with-sub-menu hover">
+                    <p class="close-menu"></p>
+                    <a href="#" class="clearfix">
+                      <strong>Categorieën</strong>
+
+                      <b class="caret"></b>
+                    </a>
+                    <div class="sub-menu" style="width: 100%; right: auto;">
+                      <div class="content" >
+                        <div class="row">
+                            @foreach($data['menus'] as $menu)
+                          <div class="col-md-3">
+                            <div class="column">
+                              <a href="#" class="title-submenu">{{$menu->name_gr}}</a>
+
+                              <div>
+                                <ul class="row-list">
+
+                                  @foreach($data['submenus'] as $sub_menu)
+                                  @if($sub_menu->category_id == $menu->id)
+                                  <li><a href="/Category/{{$sub_menu->id}}">{{$sub_menu->name_gr}}</a></li>
+                                  @endif
+                                    @endforeach
+                                </ul>
+                              </div>
+
+                            </div>
+                          </div>
+                          @endforeach
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+
+
+
+
+
+
+                  
+
+                </ul>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+                      </div>
+          <!-- //end Main menu -->
+
+        </div>
+      </div>
+
+    </div>
+
+  <!-- Navbar switcher -->
+  <!-- //end Navbar switcher -->
+  </header>
+	<!-- //Header Container  -->
+	<!-- Main Container  -->
+  <div class="main-container container">
+		<ul class="breadcrumb">
+
+		</ul>
+
+		<div class="row">
+			<!--Middle Part Start-->
+			<div id="content" class="col-md-12 col-sm-12">
+
+				<div class="product-view row">
+					<div class="left-content-product col-lg-10 col-xs-12">
+						<div class="row">
+
+              <div class="left-content-product col-lg-10 col-xs-12">
+						<div class="row">
+							<div class="content-product-left class-honizol col-sm-6 col-xs-12 ">
+								<div class="large-image  ">
+									<img itemprop="image" class="product-image-zoom" src="/{{$data['images'][1]->path}}" data-zoom-image="/{{$data['images'][1]->path}}" title="Bint Beef" alt="Bint Beef">
+								</div>
+
+								<div id="thumb-slider" class="owl-theme owl-loaded owl-drag full_slider">
+                  <?php $index=0; ?>
+                  @foreach($data['images'] as $image)
+									<a data-index="{{$index++}}" class="img thumbnail " data-image="/{{$image->path}}" title="{{$data['productd'][0]->product_slug_gr}}">
+										<img src="/{{$image->path}}" title="{{$data['productd'][0]->product_slug_gr}}" alt="{{$data['productd'][0]->product_slug_gr}}">
+									</a>
+                  @endforeach
+
+
+								</div>
+
+							</div>
+
+							<div class="content-product-right col-sm-5 col-xs-12">
+								<div class="title-product">
+									<h1>{{$data['productd'][0]->product_name_gr}}</h1>
+								</div>
+								<!-- Review ---->
+                <?php $session_currency=Session::get('session_currency');
+                switch ($session_currency) {
+                  case '$':
+                    $pricetype='$';
+                    $price=$data['productd'][0]->price_dolar;
+
+                    break;
+                    case '€':
+                      $pricetype='€';
+                      $price=$data['productd'][0]->price_euro;
+
+                      break;
+                      case 'kr':
+                        $pricetype='kr';
+                        $price=$data['productd'][0]->price_kron;
+
+                        break;
+
+                  default:
+                  $pricetype='$';
+                  $price=$data['productd'][0]->price_dolar;
+
+                    break;
+                } ?>
+
+								<div class="product-label form-group">
+									<div class="product_page_price price" itemprop="offerDetails" itemscope="" itemtype="http://data-vocabulary.org/Offer">
+										<span class="price-new" itemprop="price">{{$pricetype}}{{$price}}</span>
+										<!-- <span class="price-old">$122.00</span> -->
+									</div>
+									<div class="stock"><span>Status:</span> <span class="status-stock">Beschikbaar</span></div>
+								</div>
+
+								<div class="product-box-desc">
+									<div class="inner-box-desc">
+
+
+										<div class="model"><span> Productomschrijving </span>
+                			{!!$data['productd'][0]->product_info_gr!!}
+
+
+                		</div>
+
+									</div>
+								</div>
+
+
+								<div id="product">
+
+
+<div class="box p-left col-12 variantWrapper tooltipWrapper">
+<div class="row variantLine">
+<div class="col col-md-12 variantBox subTwo" id="ddVari" data-order="2">
+  <div id="error_gr">
+
+  </div>
+<div class="fl col-12 ease variantList">
+  @foreach($data['sizes'] as $size)
+<a id="{{$size->size_name}}" data-group-id="{{$size->size_id}}" data-target="7922" class="col box-border  " onclick="change('{{$size->size_name}}')">
+<p id="bdnz">{{$size->size_name}}</p>
+</a>
+@endforeach
+
+
+</div>
+</div>
+</div>
+</div>
+
+									<div class="form-group box-info-product">
+
+										<div class="cart">
+											<input type="button" data-toggle="tooltip" title="" value="Voeg toe aan winkelmandje" data-loading-text="Loading..." id="button-cart" class="btn btn-mega btn-lg"
+onclick="cart.addpro({{$data['productd'][0]->id}}, '1','/{{$data['images'][1]->path}}','{{$data['productd'][0]->product_name_gr}}','{{$price}}');"
+                       data-original-title="Voeg toe aan winkelmandje">
+										</div>
+
+
+									</div>
+
+								</div>
+								<!-- end box info product -->
+
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+
+				<!-- Product Tabs -->
+				<div class="producttab ">
+	<div class="tabsslider  col-xs-12">
+		<ul class="nav nav-tabs">
+			<li class="active"><a data-toggle="tab" href="#tab-1">Productomschrijving</a></li>
+
+		</ul>
+		<div class="tab-content col-xs-12">
+			<div id="tab-1" class="tab-pane fade active in">
+			{!!$data['productd'][0]->product_info_gr!!}
+
+
+			</div>
+
+
+
+		</div>
+	</div>
+</div>
+				<!-- //Product Tabs -->
+
+				<!-- Related Products -->
+
+
+				<script type="text/javascript">
+					$(document).ready(function() {
+						var zoomCollection = '.large-image img';
+						$( zoomCollection ).elevateZoom({
+							zoomType    : "inner",
+							lensSize    :"200",
+							easing:true,
+							gallery:'thumb-slider-vertical',
+							cursor: 'pointer',
+							galleryActiveClass: "active"
+						});
+						$('.large-image').magnificPopup({
+							items: [
+                <?php foreach ($data['images'] as $image): ?>
+								{src: '<?=$image->path  ?>' },
+								<?php endforeach; ?>
+							],
+							gallery: { enabled: true, preload: [0,2] },
+							type: 'image',
+							mainClass: 'mfp-fade',
+							callbacks: {
+								open: function() {
+
+									var activeIndex = parseInt($('#thumb-slider-vertical .img.active').attr('data-index'));
+									var magnificPopup = $.magnificPopup.instance;
+									magnificPopup.goTo(activeIndex);
+								}
+							}
+						});
+						$("#thumb-slider-vertical .owl2-item").each(function() {
+							$(this).find("[data-index='1']").addClass('active');
+						});
+
+						$('.thumb-video').magnificPopup({
+						  type: 'iframe',
+						  iframe: {
+							patterns: {
+							   youtube: {
+								  index: 'youtube.com/', // String that detects type of video (in this case YouTube). Simply via url.indexOf(index).
+								  id: 'v=', // String that splits URL in a two parts, second part should be %id%
+								  src: '//www.youtube.com/embed/%id%?autoplay=1' // URL that will be set as a source for iframe.
+									},
+								}
+							}
+						});
+
+						$('.product-options li.radio').click(function(){
+							$(this).addClass(function() {
+								if($(this).hasClass("active")) return "";
+								return "active";
+							});
+
+							$(this).siblings("li").removeClass("active");
+							$(this).parent().find('.selected-option').html('<span class="label label-success">'+ $(this).find('img').data('original-title') +'</span>');
+						});
+
+						var _isMobile = {
+						  iOS: function() {
+						   return navigator.userAgent.match(/iPhone/i);
+						  },
+						  any: function() {
+						   return (_isMobile.iOS());
+						  }
+						};
+
+						$(".thumb-vertical-outer .next-thumb").click(function () {
+							$( ".thumb-vertical-outer .lSNext" ).trigger( "click" );
+						});
+
+						$(".thumb-vertical-outer .prev-thumb").click(function () {
+							$( ".thumb-vertical-outer .lSPrev" ).trigger( "click" );
+						});
+
+						$(".thumb-vertical-outer .thumb-vertical").lightSlider({
+							item: 3,
+							autoWidth: false,
+							vertical:true,
+							slideMargin: 15,
+							verticalHeight:340,
+				            pager: false,
+							controls: true,
+				            prevHtml: '<i class="fa fa-angle-up"></i>',
+				            nextHtml: '<i class="fa fa-angle-down"></i>',
+							responsive: [
+								{
+									breakpoint: 1199,
+									settings: {
+										verticalHeight: 330,
+										item: 3,
+									}
+								},
+								{
+									breakpoint: 1024,
+									settings: {
+										verticalHeight: 235,
+										item: 2,
+										slideMargin: 5,
+									}
+								},
+								{
+									breakpoint: 768,
+									settings: {
+										verticalHeight: 340,
+										item: 3,
+									}
+								}
+								,
+								{
+									breakpoint: 480,
+									settings: {
+										verticalHeight: 100,
+										item: 1,
+									}
+								}
+
+							]
+
+				        });
+
+
+
+						// Product detial reviews button
+						$(".reviews_button,.write_review_button").click(function (){
+							var tabTop = $(".producttab").offset().top;
+							$("html, body").animate({ scrollTop:tabTop }, 1000);
+						});
+					});
+
+				</script>
+
+
+			</div>
+
+
+		</div>
+		<!--Middle Part End-->
+	</div>
+	<!-- //Main Container -->
 
 
     @endsection

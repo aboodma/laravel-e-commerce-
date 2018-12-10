@@ -16,10 +16,20 @@ class VisitorController extends Controller
      */
     public function index(Request $request)
     {
-      // SELECT c1.id, c1.name_ar, c2.id, c2.name_ar FROM categories c1 LEFT JOIN sub__categories c2 ON c2.category_id = c1.id
+
       $menus=DB::table('categories')->get();
       $submenus=DB::table('sub__categories')->get();
-$categories=['menus'=>$menus,'submenu'=>$submenus];
+      $settings=DB::table('settings')->get();
+      $banners=DB::table('homepage_images')->get();
+      $sliders=DB::table('homepage_sliders')->get();
+      $products=DB::table('homepage_products')
+      ->join('products','products.id','homepage_products.product_id')
+      ->join('product_images','product_images.product_id','homepage_products.product_id')
+      ->select('homepage_products.product_id','products.id','products.product_name_ar','products.product_name_ar',
+      'products.product_name_en','products.product_name_gr','products.product_slug_ar','products.product_slug_en',
+      'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','product_images.path'
+      ,'product_images.product_id' )->groupBy('homepage_products.product_id')->get();
+$data=['menus'=>$menus,'submenu'=>$submenus,'banners'=>$banners,'sliders'=>$sliders,'products'=>$products,'settings'=>$settings];
 // return $categories['submenu'];die();
       $ip=$request->ip();
        $ipp=$request->server('SERVER_PORT');
@@ -27,8 +37,11 @@ $categories=['menus'=>$menus,'submenu'=>$submenus];
        $sessionId=Session::get('id');
        if (isset($sessionId)) {
         $visitors= DB::table('visitors')->where('id', $sessionId)->first();
-         $VisitorLang=$visitors->session_lang;
+        $VisitorLang=$visitors->session_lang;
+         $VisitorCurrency=$visitors->session_currency;
          Session::put('lang', $VisitorLang);
+         Session::put('session_currency', $VisitorCurrency);
+
          $sessionLang=Session::get('lang');
 
 
@@ -51,17 +64,18 @@ $categories=['menus'=>$menus,'submenu'=>$submenus];
 
        switch ($sessionLang) {
          case 'en':
-           return view('Home.index')->with('categories',$categories);
+           return view('Home.index')->with('data',$data);
            break;
            case 'ar':
-            return view('Home.index_ar')->with('categories',$categories);
+
+             return view('Home.index_ar')->with('data',$data);
              break;
              case 'du':
-               return view('Home.index_du')->with('menus',$menus);
+               return view('Home.index_du')->with('data',$data);
                break;
 
          default:
-           return view('Home.index');
+           return view('Home.index')->with('data',$data);
            break;
        }
 
@@ -76,22 +90,8 @@ $categories=['menus'=>$menus,'submenu'=>$submenus];
       $sessionId=Session::get('id');
         DB::table('visitors')->where('id',$sessionId)->update(['session_currency'=>$request->currency]);
         Session::put('session_currency', $request->currency);
-        $sessionLang=Session::get('lang');
-        switch ($sessionLang) {
-          case 'en':
-            return view('Home.index');
-            break;
-            case 'ar':
-             return view('Home.index_ar');
-              break;
-              case 'du':
-                return view('Home.index_du');
-                break;
-
-          default:
-            return view('Home.index');
-            break;
-        }
+        $session_currency=Session::get('session_currency');
+        return $session_currency;
     }
     public function ChangeLang(Request $request)
     {
@@ -104,21 +104,7 @@ $categories=['menus'=>$menus,'submenu'=>$submenus];
         DB::table('visitors')->where('id',$sessionId)->update(['session_lang'=>$request->lang]);
         Session::put('session_lang', $request->lang);
         $sessionLang=Session::get('lang');
-        switch ($request->lang) {
-          case 'en':
-            return view('Home.index');
-            break;
-            case 'ar':
-             return view('Home.index_ar');
-              break;
-              case 'du':
-                return view('Home.index_du');
-                break;
-
-          default:
-            return view('Home.index');
-            break;
-        }
+        return $sessionLang;
     }
 
 

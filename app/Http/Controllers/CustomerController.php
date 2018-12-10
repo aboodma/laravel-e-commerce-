@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 class CustomerController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +16,62 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+      $settings=DB::table('settings')->get();
+
+      $menus=DB::table('categories')->get();
+      $submenus=DB::table('sub__categories')->get();
+$categories=['menus'=>$menus,'submenu'=>$submenus];
+      $sessionLang=Session::get('lang');
+      $PageData=['categories'=>$categories,'settings'=>$settings];
+      switch ($sessionLang) {
+        case 'en':
+          return view('Customer.index')->with('PageData',$PageData);
+          break;
+          case 'ar':
+            return view('Customer.index_ar')->with('PageData',$PageData);
+            break;
+            case 'du':
+              return view('Customer.index_du')->with('PageData',$PageData);
+              break;
+
+        default:
+        return view('Customer.index')->with('PageData',$PageData);
+
+          break;
+      }
+
+
+
+    }
+    public function Register ()
+    {
+      $settings=DB::table('settings')->get();
+
+      $menus=DB::table('categories')->get();
+      $submenus=DB::table('sub__categories')->get();
+      $countries=DB::table('countries')->get();
+      
+$categories=['menus'=>$menus,'submenu'=>$submenus];
+      $sessionLang=Session::get('lang');
+      $PageData=['categories'=>$categories,'settings'=>$settings,'countries'=>$countries];
+
+      switch ($sessionLang) {
+        case 'en':
+          return view('Customer.register')->with('PageData',$PageData);
+          break;
+          case 'ar':
+            return view('Customer.register_ar')->with('PageData',$PageData);
+            break;
+            case 'du':
+              return view('Customer.register_du')->with('PageData',$PageData);
+              break;
+
+        default:
+        return view('Customer.register')->with('PageData',$PageData);
+
+          break;
+      }
+
     }
 
     /**
@@ -81,5 +138,13 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         //
+    }
+    public function checkLogin()
+    {
+      $islogin=SESSION::get('islogin');
+      if ($islogin==null) {
+        echo "Not Login";
+      }
+      return $islogin;
     }
 }

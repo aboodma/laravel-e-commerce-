@@ -109,26 +109,51 @@ class ProductController extends Controller
           $productdata=Product::where('product_slug_en',$product)->get();
           $sizes=Size::where('product_id',$productdata[0]['id'])->get();
           $images=ProductImages::where('product_id',$productdata[0]['id'])->get();
-          return view('SingleProduct.single_product')->with('data',['productd'=>$productdata,'sizes'=>$sizes,'images'=>$images]);
+          $menus=DB::table('categories')->get();
+          $submenus=DB::table('sub__categories')->get();
+          $settings=DB::table('settings')->get();
+
+    $categories=['menus'=>$menus,'submenu'=>$submenus];
+
+    $data=['productd'=>$productdata,'sizes'=>$sizes,'images'=>$images,'menus'=>$menus,'submenus'=>$submenus,'settings'=>$settings];
+          return view('SingleProduct.single_product')->with('data',$data);
             break;
             case 'ar':
             $productdata=Product::where('product_slug_ar',$product)->get();
             $sizes=Size::where('product_id',$productdata[0]['id'])->get();
             $images=ProductImages::where('product_id',$productdata[0]['id'])->get();
-            return view('SingleProduct.single_product_ar')->with('data',['productd'=>$productdata,'sizes'=>$sizes,'images'=>$images]);
+            $menus=DB::table('categories')->get();
+            $submenus=DB::table('sub__categories')->get();
+            $settings=DB::table('settings')->get();
+
+      $categories=['menus'=>$menus,'submenu'=>$submenus];
+      $data=['productd'=>$productdata,'sizes'=>$sizes,'images'=>$images,'menus'=>$menus,'submenus'=>$submenus,'settings'=>$settings];
+            return view('SingleProduct.single_product_ar')->with('data',$data);
               break;
               case 'du':
               $productdata=Product::where('product_slug_gr',$product)->get();
               $sizes=Size::where('product_id',$productdata[0]['id'])->get();
               $images=ProductImages::where('product_id',$productdata[0]['id'])->get();
-              return view('SingleProduct.single_product_du')->with('data',['productd'=>$productdata,'sizes'=>$sizes,'images'=>$images]);
+              $menus=DB::table('categories')->get();
+              $submenus=DB::table('sub__categories')->get();
+              $settings=DB::table('settings')->get();
+
+        $categories=['menus'=>$menus,'submenu'=>$submenus];
+        $data=['productd'=>$productdata,'sizes'=>$sizes,'images'=>$images,'menus'=>$menus,'submenus'=>$submenus,'settings'=>$settings];
+              return view('SingleProduct.single_product_du')->with('data',$data);
                 break;
 
           default:
           $productdata=Product::where('product_slug_ar',$product)->get();
           $sizes=Size::where('product_id',$productdata[0]['id'])->get();
           $images=ProductImages::where('product_id',$productdata[0]['id'])->get();
-          return view('SingleProduct.single_product_ar')->with('data',['productd'=>$productdata,'sizes'=>$sizes,'images'=>$images]);
+          $menus=DB::table('categories')->get();
+          $submenus=DB::table('sub__categories')->get();
+          $settings=DB::table('settings')->get();
+
+    $categories=['menus'=>$menus,'submenu'=>$submenus];
+    $data=['productd'=>$productdata,'sizes'=>$sizes,'images'=>$images,'menus'=>$menus,'submenus'=>$submenus,'settings'=>$settings];
+          return view('SingleProduct.single_product_ar')->with('data',$data);
             break;
         }
 

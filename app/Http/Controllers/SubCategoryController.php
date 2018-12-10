@@ -18,9 +18,8 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        //
-    }
 
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -88,6 +87,11 @@ class SubCategoryController extends Controller
     }
     public function single( $sub_Category)
     {
+      $settings=DB::table('settings')->get();
+
+      $menus=DB::table('categories')->get();
+      $submenus=DB::table('sub__categories')->get();
+$categories=['menus'=>$menus,'submenu'=>$submenus];
       $sessionLang=Session::get('lang');
 
       switch ($sessionLang) {
@@ -96,13 +100,22 @@ class SubCategoryController extends Controller
         ->join('product_images','products.id','product_images.product_id')
         ->where('sub_category_id',$sub_Category)
         ->select(
-        'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr',
+        'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr','products.product_info_en',
         'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','products.sold_price_dolar','products.sold_price_euro','products.sold_price_kron','products.sub_category_id',
         'product_images.id','product_images.path','product_images.product_id')
         ->groupBy('product_images.product_id')
         ->get();
-
-        return view('Category.Category')->with('products',$data);
+        $pag=DB::table('products')
+        ->join('product_images','products.id','product_images.product_id')
+        ->where('sub_category_id',$sub_Category)
+        ->select(
+        'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr','products.product_info_en','products.product_info_gr','products.product_info_ar',
+        'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','products.sold_price_dolar','products.sold_price_euro','products.sold_price_kron','products.sub_category_id',
+        'product_images.id','product_images.path','product_images.product_id')
+        ->groupBy('product_images.product_id')
+        ->paginate(3);
+        $PageData=['data'=>$data,'categories'=>$categories,'pagination'=>$pag,'settings'=>$settings];
+        return view('Category.Category')->with('PageData',$PageData);
           break;
 
           case 'du':
@@ -110,13 +123,22 @@ class SubCategoryController extends Controller
           ->join('product_images','products.id','product_images.product_id')
           ->where('sub_category_id',$sub_Category)
           ->select(
-          'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr',
+          'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr','products.product_info_en','products.product_info_gr','products.product_info_ar',
           'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','products.sold_price_dolar','products.sold_price_euro','products.sold_price_kron','products.sub_category_id',
           'product_images.id','product_images.path','product_images.product_id')
           ->groupBy('product_images.product_id')
           ->get();
-
-          return view('Category.Category_du')->with('products',$data);
+          $pag=DB::table('products')
+          ->join('product_images','products.id','product_images.product_id')
+          ->where('sub_category_id',$sub_Category)
+          ->select(
+          'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr','products.product_info_en','products.product_info_gr','products.product_info_ar',
+          'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','products.sold_price_dolar','products.sold_price_euro','products.sold_price_kron','products.sub_category_id',
+          'product_images.id','product_images.path','product_images.product_id')
+          ->groupBy('product_images.product_id')
+          ->paginate(3);
+          $PageData=['data'=>$data,'categories'=>$categories,'pagination'=>$pag,'settings'=>$settings];
+          return view('Category.Category_du')->with('PageData',$PageData);
             break;
 
             case 'ar':
@@ -124,13 +146,23 @@ class SubCategoryController extends Controller
             ->join('product_images','products.id','product_images.product_id')
             ->where('sub_category_id',$sub_Category)
             ->select(
-            'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr',
+            'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr','products.product_info_en','products.product_info_gr','products.product_info_ar',
             'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','products.sold_price_dolar','products.sold_price_euro','products.sold_price_kron','products.sub_category_id',
             'product_images.id','product_images.path','product_images.product_id')
             ->groupBy('product_images.product_id')
             ->get();
+            $pag=DB::table('products')
+            ->join('product_images','products.id','product_images.product_id')
+            ->where('sub_category_id',$sub_Category)
+            ->select(
+            'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr','products.product_info_en','products.product_info_gr','products.product_info_ar',
+            'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','products.sold_price_dolar','products.sold_price_euro','products.sold_price_kron','products.sub_category_id',
+            'product_images.id','product_images.path','product_images.product_id')
+            ->groupBy('product_images.product_id')
+            ->paginate(5);
+            $PageData=['data'=>$data,'categories'=>$categories,'pagination'=>$pag,'settings'=>$settings];
 
-            return view('Category.Category_ar')->with('products',$data);
+            return view('Category.Category_ar')->with('PageData',$PageData);
               break;
 
         default:
@@ -138,13 +170,23 @@ class SubCategoryController extends Controller
         ->join('product_images','products.id','product_images.product_id')
         ->where('sub_category_id',$sub_Category)
         ->select(
-        'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr',
+        'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr','products.product_info_en','products.product_info_gr','products.product_info_ar',
         'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','products.sold_price_dolar','products.sold_price_euro','products.sold_price_kron','products.sub_category_id',
         'product_images.id','product_images.path','product_images.product_id')
         ->groupBy('product_images.product_id')
         ->get();
+        $pag=DB::table('products')
+        ->join('product_images','products.id','product_images.product_id')
+        ->where('sub_category_id',$sub_Category)
+        ->select(
+        'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr','products.product_info_en','products.product_info_gr','products.product_info_ar',
+        'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','products.sold_price_dolar','products.sold_price_euro','products.sold_price_kron','products.sub_category_id',
+        'product_images.id','product_images.path','product_images.product_id')
+        ->groupBy('product_images.product_id')
+        ->paginate(3);
+        $PageData=['data'=>$data,'categories'=>$categories,'pagination'=>$pag,'settings'=>$settings];
 
-        return view('Category.Category')->with('products',$data);
+        return view('Category.Category')->with('PageData',$PageData);
           break;
       }
 
