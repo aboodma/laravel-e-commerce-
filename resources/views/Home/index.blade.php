@@ -238,13 +238,15 @@
             <div class="responsive so-megamenu ">
       <nav class="navbar-default">
         <div class=" container-megamenu  horizontal">
-          <div class="navbar-header" style="margin-left: -16px;left: 130px;bottom: 0px;top: -66px;">
+          <div class="navbar-header" style="margin-left: 128px;margin-top: 20px;top: -68px;left: 101px;">
             <button type="button" id="show-megamenu" data-toggle="collapse" class="navbar-toggle">
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-
+          <button type="button" style="margin-top: 8px;top: -50px;right: 58px; padding-bottom: 3px;left: -73px;"  class="navbar-toggle" name="button">
+            <img src="/image/theme/icons/icon_minicart.png" style="margin-right: -5px;margin-bottom: 0px;" />
+          </button>
           </div>
 
 

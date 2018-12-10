@@ -231,6 +231,9 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
+          <button type="button" style="margin-top: 8px;top: 2px;right: -12px; padding-bottom: 3px;left: -69px;bottom: 52px;"  class="navbar-toggle" name="button">
+            <img src="/image/theme/icons/icon_minicart.png" style="margin-right: -5px;margin-bottom: 0px;" />
+          </button>
 
           </div>
 
@@ -270,6 +273,82 @@
                           </div>
                           @endforeach
                         </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="with-sub-menu hover">
+                    <p class="close-menu"></p>
+                    <a href="#" class="clearfix">
+                      <strong>Search</strong>
+
+                      <i class="fa fa-search"></i>
+                    </a>
+                    <div class="sub-menu" style="width: 100%; right: auto;">
+                      <div class="content" >
+                        <div class="row">
+
+                          <div class="col-md-3">
+                            <div class="column">
+
+                                <div id="sosearchpro" class="col-md-offset-12 col-md-12 col-sm-12 search-pro" style="padding-left: 36px;margin-left: 28px; width: 150%;">
+                                  <form method="GET" action="#">
+                                    <div id="search0" class="search input-group">
+                                      <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Enter keywords to search..." name="search">
+                                      <span class="input-group-btn">
+                                        <button type="submit" class="button-search btn btn-primary" name="submit_search"><i class="fa fa-search"></i></button>
+                                      </span>
+                                    </div>
+                                    <input type="hidden" name="route" value="product/search" style="border: 1px solid #e5e5e5;
+box-shadow: none;
+border-radius: 15px 0 0 15px;
+width: 57%;"/>
+                                  </form>
+                                </div>
+
+
+
+
+                            </div>
+                          </div>
+
+
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="column">
+                              <a href="#" class="title-submenu">Result</a>
+
+                              <div>
+                                <ul class="row-list">
+
+                                  <a href="product.html">
+                                    Product Name
+                                     <img src="image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview">
+                                    </a>
+
+                                </ul>
+                                <ul class="row-list">
+
+                                  <a href="product.html">
+                                    Product Name
+                                     <img src="image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview">
+                                    </a>
+
+                                </ul>
+                                <ul class="row-list">
+
+                                  <a href="product.html">
+                                    Product Name
+                                     <img src="image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview">
+                                    </a>
+
+                                </ul>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+
                       </div>
                     </div>
                   </li>
