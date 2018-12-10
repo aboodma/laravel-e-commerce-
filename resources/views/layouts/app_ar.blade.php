@@ -40,9 +40,9 @@
    	<link href="{{ asset('/css/themecss/so_megamenu.css')}}" rel="stylesheet">
     <link href="{{ asset('/css/themecss/so-categories.css')}}" rel="stylesheet">
 	<link href="{{ asset('/css/themecss/so-listing-tabs.css')}}" rel="stylesheet">
-	<link href="{{ asset('/css/header3.css')}}" rel="stylesheet">
+	<link href="{{ asset('/css/header5.css')}}" rel="stylesheet">
 	<link href="{{ asset('/css/footer2.css')}}" rel="stylesheet">
-	<link id="color_scheme" href="{{ asset('/css/home3.css')}}" rel="stylesheet">
+	<link id="color_scheme" href="{{ asset('/css/home5.css')}}" rel="stylesheet">
 	<link href="{{ asset('/css/responsive.css')}}" rel="stylesheet">
 
 

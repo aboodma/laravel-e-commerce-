@@ -416,6 +416,7 @@ width: 57%;"/>
 
         </div>
 
+
         <div class="col-lg-3 col-md-3">
           <div class="module  hidden-sm hidden-xs">
             <div class="modcontent clearfix">
@@ -438,7 +439,38 @@ width: 57%;"/>
           </div>
         </div>
 
+        <div class="module extraslider-home5 titleLine">
+          <h3 class="modtitle">Categoreies</h3>
+          <div id="so_extraslider_1" >
+            <!-- Begin extraslider-inner -->
+            <div class="so-extraslider products-list grid product-style__5"  data-autoplay="yes" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="35" data-items_column0="4" data-items_column1="3" data-items_column2="2"  data-items_column3="2" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
+              <!--Begin Items-->
 
+              @foreach($data['menus'] as $menu)
+              <div class="ltabs-item product-layout">
+                <div class="product-item-container">
+                  <div class="left-block">
+                    <div class="product-image-container second_img ">
+                      <img src="image/demo/cms/home5/banner4.jpg"  alt="Apple Cinema 30&quot;" class="img-responsive" />
+                    </div>
+                    <!--Sale Label-->
+                    <!--full quick view block-->
+                    <a class="quickview  visible-lg" href="{{$menu->name_en}}">View Category</a>
+                    <!--end full quick view block-->
+                  </div>
+                  <div class="right-block">
+                    <div class="caption">
+                      <h4><a href="{{$menu->name_en}}">{{ucfirst($menu->name_en)}}</a></h4>
+                    </div>
+                  </div><!-- right block -->
+                </div>
+              </div>
+              @endforeach
+              <!--End Items-->
+            </div>
+            <!--End extraslider-inner -->
+          </div>
+        </div>
 
         <div class="banner2-id10 clearfix">
           <div class="module clearfix">
