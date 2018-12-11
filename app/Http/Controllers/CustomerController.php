@@ -100,7 +100,45 @@ $categories=['menus'=>$menus,'submenu'=>$submenus];
      */
     public function store(Request $request)
     {
-        //
+
+      // _token=qAyqcMrtiq5AFe54bzXuvQDpXJuuYHiBurfJeboq;
+      $firstname=$request->firstname;
+      $lastname=$request->lastname;
+      $email=$request->email;
+      $telephone=$request->telephone;
+      $fax=$request->fax;
+      $company=$request->company;
+      $address_1=$request->address_1;
+      $address_2=$request->address_2;
+      $city=$request->city;
+      $postcode=$request->postcode;
+      $country_id=$request->country_id;
+      $password=$request->password;
+
+      /*
+      `name`, `phone`, `address1`, `address2`, `company`, `postcode`, `country_id`, `city`, `email`, `email_verified_at`, `password`,
+      */
+      $newcustomer=DB::table('customers')->insert([
+        'name'=>$firstname,
+        'lname'=>$lastname,
+        'email'=>$email,
+        'phone'=>$telephone,
+        'company'=>$company,
+        'address1'=>$address_1,
+        'address2'=>$address_2,
+        'city'=>$city,
+        'postcode'=>$postcode,
+        'country_id'=>$country_id,
+        'password'=>$password,
+      ]);
+      if ($newcustomer) {
+        echo "1";
+      }else {
+        echo "0";
+      }
+
+
+
     }
 
     /**

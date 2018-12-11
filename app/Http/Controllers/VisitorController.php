@@ -6,6 +6,7 @@ use App\Visitor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use App\Product;
 
 class VisitorController extends Controller
 {
@@ -111,6 +112,65 @@ $data=['menus'=>$menus,'submenu'=>$submenus,'banners'=>$banners,'sliders'=>$slid
     public function out()
     {
         Session::flush();
+    }
+    public function search(Request $request)
+    {
+      $sessionLang=Session::get('lang');
+
+      switch ($sessionLang) {
+        case 'en':
+
+        $productsearch=DB::table('products')
+        ->join('product_images','products.id','product_images.product_id')
+        ->where('product_name_en', 'LIKE', '%'.$request->search.'%')
+        ->select(
+        'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr','products.product_info_en','products.product_info_gr','products.product_info_ar',
+        'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','products.sold_price_dolar','products.sold_price_euro','products.sold_price_kron','products.sub_category_id',
+        'product_images.id','product_images.path','product_images.product_id')
+        ->groupBy('product_images.product_id')->get();
+        return $productsearch;
+
+          break;
+          case 'ar':
+          $productsearch=DB::table('products')
+          ->join('product_images','products.id','product_images.product_id')
+          ->where('product_name_ar', 'LIKE', '%'.$request->search.'%')
+          ->select(
+          'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr','products.product_info_en','products.product_info_gr','products.product_info_ar',
+          'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','products.sold_price_dolar','products.sold_price_euro','products.sold_price_kron','products.sub_category_id',
+          'product_images.id','product_images.path','product_images.product_id')
+          ->groupBy('product_images.product_id')->get();
+
+          return $productsearch;
+
+            break;
+            case 'du':
+            $productsearch=DB::table('products')
+            ->join('product_images','products.id','product_images.product_id')
+            ->where('product_name_gr', 'LIKE', '%'.$request->search.'%')
+            ->select(
+            'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr','products.product_info_en','products.product_info_gr','products.product_info_ar',
+            'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','products.sold_price_dolar','products.sold_price_euro','products.sold_price_kron','products.sub_category_id',
+            'product_images.id','product_images.path','product_images.product_id')
+            ->groupBy('product_images.product_id')->get();
+
+            return $productsearch;
+
+              break;
+
+        default:
+        $productsearch=DB::table('products')
+        ->join('product_images','products.id','product_images.product_id')
+        ->where('product_name_en', 'LIKE', '%'.$request->search.'%')
+        ->select(
+        'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr','products.product_info_en','products.product_info_gr','products.product_info_ar',
+        'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','products.sold_price_dolar','products.sold_price_euro','products.sold_price_kron','products.sub_category_id',
+        'product_images.id','product_images.path','product_images.product_id')
+        ->groupBy('product_images.product_id')->get();
+        return $productsearch;
+
+          break;
+      }
     }
 
 

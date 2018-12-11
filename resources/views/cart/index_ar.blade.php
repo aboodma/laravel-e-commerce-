@@ -297,7 +297,7 @@
                     <li class="with-sub-menu hover">
                       <p class="close-menu"></p>
                       <a href="#" class="clearfix">
-                        <strong>Search</strong>
+                        <strong>بحث</strong>
 
                         <i class="fa fa-search"></i>
                       </a>
@@ -309,18 +309,20 @@
                               <div class="column">
 
                                   <div id="sosearchpro" class="col-md-offset-12 col-md-12 col-sm-12 search-pro" style="padding-left: 36px;margin-left: 28px; width: 150%;">
-                                    <form method="GET" action="#">
+                                    <form  id="searchp"  >
+                                      {{csrf_field()}}
                                       <div id="search0" class="search input-group">
                                         <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Enter keywords to search..." name="search">
                                         <span class="input-group-btn">
-                                          <button type="submit" class="button-search btn btn-primary" name="submit_search"><i class="fa fa-search"></i></button>
+                                          <input type="submit" class="button-search btn btn-primary" name="submit" value="submit"><i class="fa fa-search"></i></input>
                                         </span>
                                       </div>
-                                      <input type="hidden" name="route" value="product/search" style="border: 1px solid #e5e5e5;
-  box-shadow: none;
-  border-radius: 15px 0 0 15px;
-  width: 57%;"/>
-                                    </form>
+                                      </form>
+                                      <input type="text" class="autosearch-input form-control mobileShow" id="mobilesearchinput" name="mobilesearchinput" value="product/search" style="border: 1px solid #e5e5e5;
+                                      box-shadow: none;
+                                      border-radius: 15px 0 0 15px;
+                                      width: 57%;"/>
+
                                   </div>
 
 
@@ -331,41 +333,20 @@
 
 
                           </div>
-                          <!-- <div class="row">
+                          <div class="row">
                             <div class="col-md-12">
                               <div class="column">
-                                <a href="#" class="title-submenu">Result</a>
+                                <a href="#" class="title-submenu">النتائج</a>
 
-                                <div>
-                                  <ul class="row-list">
+                                <div id="Result">
 
-                                    <a href="product.html">
-                                      Product Name
-                                       <img src="image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview">
-                                      </a>
 
-                                  </ul>
-                                  <ul class="row-list">
 
-                                    <a href="product.html">
-                                      Product Name
-                                       <img src="image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview">
-                                      </a>
-
-                                  </ul>
-                                  <ul class="row-list">
-
-                                    <a href="product.html">
-                                      Product Name
-                                       <img src="image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview">
-                                      </a>
-
-                                  </ul>
                                 </div>
 
                               </div>
                             </div>
-                          </div> -->
+                          </div>
 
                         </div>
                       </div>
@@ -580,7 +561,7 @@
               success: function (res){
                 if (res == "1") {
                   $('#ignismyModal').modal('show');
-                  
+
                 }
               }
             })

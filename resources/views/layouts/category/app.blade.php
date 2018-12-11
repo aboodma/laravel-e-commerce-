@@ -242,14 +242,14 @@
 
 <!-- Theme files
 ============================================ -->
-<script type="text/javascript" src="/js/themejs/application.js"></script>
-<script type="text/javascript" src="/js/themejs/homepage.js"></script>
-<script type="text/javascript" src="/js/themejs/so_megamenu.js"></script>
-<script type="text/javascript" src="/js/themejs/addtocart.js"></script>
-<script type="text/javascript" src="/js/themejs/pathLoader.js"></script>
+<script type="text/javascript" src="{{ asset('/js/themejs/application.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/themejs/homepage.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/themejs/so_megamenu.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/themejs/addtocart.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/themejs/pathLoader.js') }}"></script>
 <!--<script type="text/javascript" src="/js/themejs/toppanel.js"></script>-->
 <script type="text/javascript" src="{{ asset('/js/scripts.js') }}"></script>
-<script type="text/javascript" src="/js/themejs/cpanel.js"></script>
+<script type="text/javascript" src="{{ asset('/js/themejs/cpanel.js') }}"></script>
 <script type="text/javascript">
 <!--
 var $typeheader = 'header-home5';

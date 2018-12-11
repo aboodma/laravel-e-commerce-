@@ -194,12 +194,12 @@
           <div id="sosearchpro" class="col-md-offset-1 col-md-3 col-sm-12 search-pro">
             <form method="GET" action="#">
               <div id="search0" class="search input-group">
-                <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Enter keywords to search..." name="search">
+                <input required class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Enter keywords to search..." name="search">
                 <span class="input-group-btn">
                   <button type="submit" class="button-search btn btn-primary" name="submit_search"><i class="fa fa-search"></i></button>
                 </span>
               </div>
-              <input type="hidden" name="route" value="product/search" />
+              <input required type="hidden" name="route" value="product/search" />
             </form>
           </div>
           <!-- //end Search -->
@@ -309,7 +309,8 @@
   			<div id="content" class="col-sm-12">
   				<h2 class="title">Account Registreren</h2>
   				<p>Als u al een account bij ons hebt, logt u dan in op <a href="/login">login pagina</a>.</p>
-  				<form action="" method="post" enctype="multipart/form-data" class="form-horizontal account-register clearfix">
+          <form id="customerRegister" class="form-horizontal account-register clearfix">
+            {{csrf_field()}}
   					<fieldset id="account">
   						<legend>Jouw persoonlijke gegevens</legend>
   						<div class="form-group required" style="display: none;">
@@ -317,7 +318,7 @@
   							<div class="col-sm-10">
   								<div class="radio">
   									<label>
-  										<input type="radio" name="customer_group_id" value="1" checked="checked"> Default
+  										<input required type="radio" name="customer_group_id" value="1" checked="checked"> Default
   									</label>
   								</div>
   							</div>
@@ -325,31 +326,31 @@
   						<div class="form-group required">
   							<label class="col-sm-2 control-label" for="input-firstname">Voornaam</label>
   							<div class="col-sm-10">
-  								<input type="text" name="firstname" value="" placeholder="Voornaam" id="input-firstname" class="form-control">
+  								<input required type="text" name="firstname" value="" placeholder="Voornaam" id="input-firstname" class="form-control">
   							</div>
   						</div>
   						<div class="form-group required">
   							<label class="col-sm-2 control-label" for="input-lastname">Achternaam</label>
   							<div class="col-sm-10">
-  								<input type="text" name="lastname" value="" placeholder="Achternaam" id="input-lastname" class="form-control">
+  								<input required type="text" name="lastname" value="" placeholder="Achternaam" id="input-lastname" class="form-control">
   							</div>
   						</div>
   						<div class="form-group required">
   							<label class="col-sm-2 control-label" for="input-email">E-Mail</label>
   							<div class="col-sm-10">
-  								<input type="email" name="email" value="" placeholder="E-Mail" id="input-email" class="form-control">
+  								<input required type="email" name="email" value="" placeholder="E-Mail" id="input-email" class="form-control">
   							</div>
   						</div>
   						<div class="form-group required">
   							<label class="col-sm-2 control-label" for="input-telephone">Telefoon</label>
   							<div class="col-sm-10">
-  								<input type="tel" name="telephone" value="" placeholder="Telefoon" id="input-telephone" class="form-control">
+  								<input required type="tel" name="telephone" value="" placeholder="Telefoon" id="input-telephone" class="form-control">
   							</div>
   						</div>
   						<div class="form-group">
   							<label class="col-sm-2 control-label" for="input-fax">Fax</label>
   							<div class="col-sm-10">
-  								<input type="text" name="fax" value="" placeholder="Fax" id="input-fax" class="form-control">
+  								<input required type="text" name="fax" value="" placeholder="Fax" id="input-fax" class="form-control">
   							</div>
   						</div>
   					</fieldset>
@@ -358,31 +359,31 @@
   						<div class="form-group">
   							<label class="col-sm-2 control-label" for="input-company">Bedrijf</label>
   							<div class="col-sm-10">
-  								<input type="text" name="company" value="" placeholder="Bedrijf" id="input-company" class="form-control">
+  								<input required type="text" name="company" value="" placeholder="Bedrijf" id="input-company" class="form-control">
   							</div>
   						</div>
   						<div class="form-group required">
   							<label class="col-sm-2 control-label" for="input-address-1">Adres 1</label>
   							<div class="col-sm-10">
-  								<input type="text" name="address_1" value="" placeholder="adres 1" id="input-address-1" class="form-control">
+  								<input required type="text" name="address_1" value="" placeholder="adres 1" id="input-address-1" class="form-control">
   							</div>
   						</div>
   						<div class="form-group">
   							<label class="col-sm-2 control-label" for="input-address-2">Adres 2</label>
   							<div class="col-sm-10">
-  								<input type="text" name="address_2" value="" placeholder="Adres 2" id="input-address-2" class="form-control">
+  								<input required type="text" name="address_2" value="" placeholder="Adres 2" id="input-address-2" class="form-control">
   							</div>
   						</div>
   						<div class="form-group required">
   							<label class="col-sm-2 control-label" for="input-city">Stad</label>
   							<div class="col-sm-10">
-  								<input type="text" name="city" value="" placeholder="stad" id="input-city" class="form-control">
+  								<input required type="text" name="city" value="" placeholder="stad" id="input-city" class="form-control">
   							</div>
   						</div>
   						<div class="form-group required">
   							<label class="col-sm-2 control-label" for="input-postcode">Postcode</label>
   							<div class="col-sm-10">
-  								<input type="text" name="postcode" value="" placeholder="Postcode" id="input-postcode" class="form-control">
+  								<input required type="text" name="postcode" value="" placeholder="Postcode" id="input-postcode" class="form-control">
   							</div>
   						</div>
   						<div class="form-group required">
@@ -403,13 +404,17 @@
   						<div class="form-group required">
   							<label class="col-sm-2 control-label" for="input-password">Wachtwoord</label>
   							<div class="col-sm-10">
-  								<input type="password" name="password" value="" placeholder="Wachtwoord" id="input-password" class="form-control">
+  								<input required type="password" name="password" value="" placeholder="Wachtwoord" id="input-password" class="form-control">
+                  <small id="error"></small>
+
   							</div>
   						</div>
   						<div class="form-group required">
   							<label class="col-sm-2 control-label" for="input-confirm">Wachtwoord bevestigen</label>
   							<div class="col-sm-10">
-  								<input type="password" name="confirm" value="" placeholder="Wachtwoord bevestigen" id="input-confirm" class="form-control">
+  								<input required type="password" name="confirm" value="" placeholder="Wachtwoord bevestigen" id="input-confirm" class="form-control">
+                  <small id="errorco"></small>
+
   							</div>
   						</div>
   					</fieldset>
@@ -417,8 +422,8 @@
   						<legend></legend>
               <div class="buttons">
     						<div class="pull-right">Ik heb de. Gelezen en ga ermee akkoord <a href="#" class="agree"><b>Voorwaarden en privacy</b></a>
-    							<input class="box-checkbox" type="checkbox" name="agree" value="1"> &nbsp;
-    							<input type="submit" value="voortzetten" class="btn btn-primary">
+    							<input required class="box-checkbox" type="checkbox" name="agree" value="1"> &nbsp;
+    							<input  type="submit" value="voortzetten" class="btn btn-primary">
     						</div>
     					</div>
   					</fieldset>
@@ -433,4 +438,39 @@
   		</div>
   	</div>
     <br>
+    <script>
+      function passwordvalidation() {
+        var value = $("#input-password").val();
+        if (value < 6) {
+          var msg = "Wachtwoord moet uit meer dan 6 cijfers bestaan";
+
+          $("#error").html(msg);
+        }
+      };
+      function confirmpass() {
+        var value = $("#input-password").val();
+        var confirmv = $("#input-confirm").val();
+        if (confirmv != value) {
+          var msg=" Wachtwoord komt niet overeen ";
+
+  $("#errorco").html(msg);
+        }
+      };
+      $(document).ready(function () {
+        $("#customerRegister").submit(function (e) {
+          var form = $("#customerRegister");
+          e.preventDefault();
+          var Data = $(form).serialize();
+          $.ajax({
+            url:"/Customer/register",
+            type:"POST",
+            data:Data,
+            success:function (req){
+              window.location.href = "/Customer/login";
+            }
+          })
+
+        })
+      })
+    </script>
 @endsection

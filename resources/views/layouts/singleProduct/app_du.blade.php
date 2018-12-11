@@ -62,127 +62,127 @@
   <br>
 	<!-- Footer Container -->
   <footer class="footer-container type_footer2">
-		<!-- Footer Top Container -->
-		<section class="footer-top">
-			<div class="container content">
-				<div class="row">
-					<div class="col-sm-12 collapsed-block footer-links">
-						<div class="module clearfix">
-							<div class="modcontent">
+    <!-- Footer Top Container -->
+    <section class="footer-top">
+      <div class="container content">
+        <div class="row">
+          <div class="col-sm-12 collapsed-block footer-links">
+            <div class="module clearfix">
+              <div class="modcontent">
 
-								<div class="icons-social">
-										<h3 class="modtitle">تابعنا</h3>
-										<div class="list-inline">
-											<a title="Facebook" href="@yield('facebook')" target="_blank">
-												<span class="fa fa-facebook icon-circled icon-color"></span>
-											</a>
+                <div class="icons-social">
+                    <h3 class="modtitle">Volg ons</h3>
+                    <div class="list-inline">
+                      <a title="Facebook" href="@yield('facebook')" target="_blank">
+                        <span class="fa fa-facebook icon-circled icon-color"></span>
+                      </a>
 
-											<a title="instagram" href="@yield('instagram')" target="_blank">
-												<span class="fa fa-instagram icon-circled icon-color"></span>
-											</a>
+                      <a title="instagram" href="@yield('instagram')" target="_blank">
+                        <span class="fa fa-instagram icon-circled icon-color"></span>
+                      </a>
 
-											<!-- <a title="Google+" href="https://plus.google.com/u/0/+Smartaddons" target="_blank">
-												<span class="fa fa-google-plus icon-circled icon-color"></span>
-											</a>
+                      <!-- <a title="Google+" href="https://plus.google.com/u/0/+Smartaddons" target="_blank">
+                        <span class="fa fa-google-plus icon-circled icon-color"></span>
+                      </a>
 
-											<a title="Linkedin" href="#" target="_blank">
-												<span class="fa fa-linkedin icon-circled icon-color"></span>
-											</a>
+                      <a title="Linkedin" href="#" target="_blank">
+                        <span class="fa fa-linkedin icon-circled icon-color"></span>
+                      </a>
 
-											<a title="Pinterest" href="#" target="_blank">
-												<span class="fa fa-instagram icon-circled icon-color"></span>
-											</a>
+                      <a title="Pinterest" href="#" target="_blank">
+                        <span class="fa fa-instagram icon-circled icon-color"></span>
+                      </a>
 
-											<a title="Pinterest" href="#" target="_blank">
-												<span class="fa fa-youtube icon-circled icon-color"></span>
-											</a> -->
-										</div>
+                      <a title="Pinterest" href="#" target="_blank">
+                        <span class="fa fa-youtube icon-circled icon-color"></span>
+                      </a> -->
+                    </div>
 
-								</div>
-								<hr class="footer-lines">
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-6 col-md-3 box-information">
-						<div class="module clearfix">
-							<h3 class="modtitle">المعلومات</h3>
-							<div class="modcontent">
-								<ul class="menu">
-									<li><a href="about-us.html">حولنا</a></li>
-									<li><a href="faq.html">الأسئلة الأكثر شيوعا</a></li>
-									<!-- <li><a href="order-history.html">Order history</a></li> -->
-									<!-- <li><a href="order-information.html">Order information</a></li> -->
-								</ul>
-							</div>
-						</div>
-					</div>
+                </div>
+                <hr class="footer-lines">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 box-information">
+            <div class="module clearfix">
+              <h3 class="modtitle">Informatie</h3>
+              <div class="modcontent">
+                <ul class="menu">
+                  <li><a href="about-us.html">Over ons</a></li>
+                  <li><a href="faq.html">FAQ</a></li>
+                  <!-- <li><a href="order-history.html">Order history</a></li> -->
+                  <!-- <li><a href="order-information.html">Order information</a></li> -->
+                </ul>
+              </div>
+            </div>
+          </div>
 
-					<div class="col-sm-6 col-md-3 box-service">
-						<div class="module clearfix">
-							<h3 class="modtitle">خدمة العملاء</h3>
-							<div class="modcontent">
-								<ul class="menu">
-									<li><a href="contact.html">تواصل معنا</a></li>
-									<li><a href="return.html">الإعادة</a></li>
-									<!-- <li><a href="sitemap.html">Site Map</a></li> -->
-									<!-- <li><a href="my-account.html">My Account</a></li> -->
-								</ul>
-							</div>
-						</div>
-					</div>
+          <div class="col-sm-6 col-md-3 box-service">
+            <div class="module clearfix">
+              <h3 class="modtitle">Klantenservice</h3>
+              <div class="modcontent">
+                <ul class="menu">
+                  <li><a href="contact.html">Neem contact met ons op</a></li>
+                  <li><a href="return.html">Retourformulier</a></li>
+                  <!-- <li><a href="sitemap.html">Site Map</a></li> -->
+                  <!-- <li><a href="my-account.html">My Account</a></li> -->
+                </ul>
+              </div>
+            </div>
+          </div>
 
-					<!-- <div class="col-sm-6 col-md-3 box-account">
-						<div class="module clearfix">
-							<h3 class="modtitle">My Account</h3>
-							<div class="modcontent">
-								<ul class="menu">
-									<li><a href="#">Brands</a></li>
-									<li><a href="gift-voucher.html">Gift Vouchers</a></li>
-									<li><a href="#">Affiliates</a></li>
-									<li><a href="#">Specials</a></li>
-									<li><a href="#" target="_blank">Our Blog</a></li>
-								</ul>
-							</div>
-						</div>
-					</div> -->
+          <!-- <div class="col-sm-6 col-md-3 box-account">
+            <div class="module clearfix">
+              <h3 class="modtitle">My Account</h3>
+              <div class="modcontent">
+                <ul class="menu">
+                  <li><a href="#">Brands</a></li>
+                  <li><a href="gift-voucher.html">Gift Vouchers</a></li>
+                  <li><a href="#">Affiliates</a></li>
+                  <li><a href="#">Specials</a></li>
+                  <li><a href="#" target="_blank">Our Blog</a></li>
+                </ul>
+              </div>
+            </div>
+          </div> -->
 
-					<div class="col-sm-6 col-md-3 collapsed-block ">
-						<div class="module clearfix">
-							<h3 class="modtitle">تواصل معنا	</h3>
-							<div class="modcontent">
-								<ul class="contact-address">
-									<li><span class="fa fa-map-marker"></span>  @yield('address') </li>
-									<li><span class="fa fa-envelope-o"></span> البريد الإلكتروني: <a href="#">  @yield('mail') </a></li>
-									<li><span class="fa fa-phone">&nbsp;</span> الهاتف : @yield('phone') </li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-
-				</div>
-			</div>
-		</section>
-		<!-- /Footer Top Container -->
-
-		<!-- Footer Bottom Container -->
-		<div class="footer-bottom-block ">
-			<div class=" container">
-				<div class="row">
-					<div class="col-sm-5 copyright-text">جميع الحقوق محفوظة ©</div>
-					<div class="col-sm-7">
-						<div class="block-payment text-right"><img src="image/demo/content/payment.png" alt="payment" title="payment" ></div>
-					</div>
-					<!--Back To Top-->
-					<div class="back-to-top"><i class="fa fa-angle-up"></i><span> Top </span></div>
-
-				</div>
-			</div>
-		</div>
-		<!-- /Footer Bottom Container -->
+          <div class="col-sm-6 col-md-3 collapsed-block ">
+            <div class="module clearfix">
+              <h3 class="modtitle">Neem contact met ons op	</h3>
+              <div class="modcontent">
+                <ul class="contact-address">
+                  <li><span class="fa fa-map-marker"></span>  @yield('address') </li>
+                  <li><span class="fa fa-envelope-o"></span> Mail: <a href="#">  @yield('mail') </a></li>
+                  <li><span class="fa fa-phone">&nbsp;</span> Telefoon : @yield('phone') </li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
 
-	</footer>
+        </div>
+      </div>
+    </section>
+    <!-- /Footer Top Container -->
+<br>
+    <!-- Footer Bottom Container -->
+    <div class="footer-bottom-block ">
+      <div class=" container">
+        <div class="row">
+          <div class="col-sm-5 copyright-text">alle auteursrechten voorbehouden ©</div>
+          <div class="col-sm-7">
+            <div class="block-payment text-right"><img src="/image/demo/content/payment.png" alt="payment" title="payment" ></div>
+          </div>
+          <!--Back To Top-->
+          <div class="back-to-top"><i class="fa fa-angle-up"></i><span> Top </span></div>
+
+        </div>
+      </div>
+    </div>
+    <!-- /Footer Bottom Container -->
+
+
+  </footer>
 	<!-- //end Footer Container -->
 
     </div>
@@ -241,14 +241,14 @@
 
 <!-- Theme files
 ============================================ -->
-<script type="text/javascript" src="/js/themejs/application.js"></script>
-<script type="text/javascript" src="/js/themejs/homepage.js"></script>
-<script type="text/javascript" src="/js/themejs/so_megamenu.js"></script>
-<script type="text/javascript" src="/js/themejs/addtocart.js"></script>
-<script type="text/javascript" src="/js/themejs/pathLoader.js"></script>
-<!--<script type="text/javascript" src="/js/themejs/toppanel.js"></script>-->
+<script type="text/javascript" src="{{ asset('/js/themejs/application.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/themejs/homepage.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/themejs/so_megamenu.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/themejs/addtocart.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/themejs/pathLoader.js') }}"></script>
+<!--<script type="text/javascript" src="{{ asset('/js/themejs/toppanel.js') }}"></script>-->
 <script type="text/javascript" src="{{ asset('/js/scripts.js') }}"></script>
-<script type="text/javascript" src="/js/themejs/cpanel.js"></script>
+<script type="text/javascript" src="{{ asset('/js/themejs/cpanel.js') }}"></script>
 <script type="text/javascript">
 <!--
 var $typeheader = 'header-home5';

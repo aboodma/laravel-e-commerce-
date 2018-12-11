@@ -8,7 +8,14 @@
 @section('facebook',$data['settings'][0]->facebook)
 @section('instagram',$data['settings'][0]->instagram)
 @section('content')
-
+<style media="screen">
+  .mobileShow { display: none;}
+  @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px){
+      .mobileShow {display: inline;}
+  }
+</style>
 <body class="common-home res layout-home5 ">
 
     <div id="wrapper" class="wrapper-full banners-effect-7">
@@ -120,65 +127,11 @@
                     <ul class="tab-content content dropdown-menu pull-right shoppingcart-box" role="menu">
 
                       <li>
-                        <table class="table table-striped">
-                          <tbody>
-                            <tr>
-                              <td class="text-center" style="width:70px">
-                                <a href="product.html"> <img src="image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
-                              </td>
-                              <td class="text-left"> <a class="cart_product_name" href="product.html">Filet Mign</a> </td>
-                              <td class="text-center"> x1 </td>
-                              <td class="text-center"> $1,202.00 </td>
-                              <td class="text-right">
-                                <a href="product.html" class="fa fa-edit"></a>
-                              </td>
-                              <td class="text-right">
-                                <a onclick="cart.remove('2');" class="fa fa-times fa-delete"></a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="text-center" style="width:70px">
-                                <a href="product.html"> <img src="image/demo/shop/product/resize/3.jpg" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
-                              </td>
-                              <td class="text-left"> <a class="cart_product_name" href="product.html">Canon EOS 5D</a> </td>
-                              <td class="text-center"> x1 </td>
-                              <td class="text-center"> $60.00 </td>
-                              <td class="text-right">
-                                <a href="product.html" class="fa fa-edit"></a>
-                              </td>
-                              <td class="text-right">
-                                <a onclick="cart.remove('1');" class="fa fa-times fa-delete"></a>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+
                       </li>
                       <li>
                         <div>
-                          <table class="table table-bordered">
-                            <tbody>
-                              <tr>
-                                <td class="text-left"><strong>Sub-Total</strong>
-                                </td>
-                                <td class="text-right">$1,060.00</td>
-                              </tr>
-                              <tr>
-                                <td class="text-left"><strong>Eco Tax (-2.00)</strong>
-                                </td>
-                                <td class="text-right">$2.00</td>
-                              </tr>
-                              <tr>
-                                <td class="text-left"><strong>VAT (20%)</strong>
-                                </td>
-                                <td class="text-right">$200.00</td>
-                              </tr>
-                              <tr>
-                                <td class="text-left"><strong>Total</strong>
-                                </td>
-                                <td class="text-right">$1,262.00</td>
-                              </tr>
-                            </tbody>
-                          </table>
+
                           <p class="text-right"> <a class="btn view-cart" href="cart.html"><i class="fa fa-shopping-cart"></i>View Cart</a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" href="checkout.html"><i class="fa fa-share"></i>Checkout</a> </p>
                         </div>
                       </li>
@@ -291,7 +244,7 @@
                   <li class="with-sub-menu hover">
                     <p class="close-menu"></p>
                     <a href="#" class="clearfix">
-                      <strong>Search</strong>
+                      <strong>بحث</strong>
 
                       <i class="fa fa-search"></i>
                     </a>
@@ -303,18 +256,20 @@
                             <div class="column">
 
                                 <div id="sosearchpro" class="col-md-offset-12 col-md-12 col-sm-12 search-pro" style="padding-left: 36px;margin-left: 28px; width: 150%;">
-                                  <form method="GET" action="#">
+                                  <form  id="searchp"  >
+                                    {{csrf_field()}}
                                     <div id="search0" class="search input-group">
                                       <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Enter keywords to search..." name="search">
                                       <span class="input-group-btn">
-                                        <button type="submit" class="button-search btn btn-primary" name="submit_search"><i class="fa fa-search"></i></button>
+                                        <input type="submit" class="button-search btn btn-primary" name="submit" value="submit"><i class="fa fa-search"></i></input>
                                       </span>
                                     </div>
-                                    <input type="hidden" name="route" value="product/search" style="border: 1px solid #e5e5e5;
-box-shadow: none;
-border-radius: 15px 0 0 15px;
-width: 57%;"/>
-                                  </form>
+                                    </form>
+                                    <input type="text" class="autosearch-input form-control mobileShow" id="mobilesearchinput" name="mobilesearchinput" value="product/search" style="border: 1px solid #e5e5e5;
+                                    box-shadow: none;
+                                    border-radius: 15px 0 0 15px;
+                                    width: 57%;"/>
+
                                 </div>
 
 
@@ -328,33 +283,12 @@ width: 57%;"/>
                         <div class="row">
                           <div class="col-md-12">
                             <div class="column">
-                              <a href="#" class="title-submenu">Result</a>
+                              <a href="#" class="title-submenu">النتائج</a>
 
-                              <div>
-                                <ul class="row-list">
+                              <div id="Result">
 
-                                  <a href="product.html">
-                                    Product Name
-                                     <img src="image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview">
-                                    </a>
 
-                                </ul>
-                                <ul class="row-list">
 
-                                  <a href="product.html">
-                                    Product Name
-                                     <img src="image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview">
-                                    </a>
-
-                                </ul>
-                                <ul class="row-list">
-
-                                  <a href="product.html">
-                                    Product Name
-                                     <img src="image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview">
-                                    </a>
-
-                                </ul>
                               </div>
 
                             </div>
@@ -600,5 +534,40 @@ width: 57%;"/>
   <!-- Block Spotlight2  -->
 
   <!-- //Block Spotlight3  -->
+<script>
+$(document).ready(function () {
+	$("#searchp").submit(function (e) {
+		e.preventDefault();
+		var data = $("#searchp").serialize();
+		$.ajax({
+			url:"/search",
+			type:"POST",
+			data:data,
+			success : function (come) {
+        // console.log(come[0]);
+        if (come.length  === 0) {
+        var  msg = "no products Similar";
+        $("#Result").html(msg);
 
+        }
+        if (come.length  !== 0) {
+          console.log(come.length);
+          for (var i = 0; i < come.length; i++) {
+            var path=come[i]['path'];
+            var name=come[i]['product_name_ar'];
+            var slug=come[i]['product_slug_ar'];
+            $("#Result").append('<ul class="row-list"><a href="/product/'+slug+'"> <img src="'+path+'" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview">'+name+'</a></ul>');
+
+          }
+
+        }
+
+
+			}
+		})
+	})
+})
+
+
+</script>
 @endsection

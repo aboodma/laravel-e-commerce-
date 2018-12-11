@@ -185,12 +185,12 @@
         <div class="row">
           <!-- Logo -->
           <div class="navbar-logo col-md-offset-4 col-md-4 col-sm-12 col-xs-12">
-            <a href="/"><img src="/image/demo/logos/logo_5.png" title="Your Store" alt="Your Store" /></a>
+            <a href="/"><img src="/image/demo/logos/logo_5.png" /></a>
           </div>
           <!-- //end Logo -->
 
           <!-- Search -->
-          <div id="sosearchpro" class="col-md-offset-1 col-md-3 col-sm-12 search-pro">
+          <!-- <div id="sosearchpro" class="col-md-offset-1 col-md-3 col-sm-12 search-pro">
             <form method="GET" action="#">
               <div id="search0" class="search input-group">
                 <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Enter keywords to search..." name="search">
@@ -200,7 +200,7 @@
               </div>
               <input type="hidden" name="route" value="product/search" />
             </form>
-          </div>
+          </div> -->
           <!-- //end Search -->
 
           <!-- Secondary menu -->
@@ -272,7 +272,63 @@
                     </div>
                   </li>
 
+                  <li class="with-sub-menu hover">
+                    <p class="close-menu"></p>
+                    <a href="#" class="clearfix">
+                      <strong>بحث</strong>
 
+                      <i class="fa fa-search"></i>
+                    </a>
+                    <div class="sub-menu" style="width: 100%; right: auto;">
+                      <div class="content" >
+                        <div class="row">
+
+                          <div class="col-md-3">
+                            <div class="column">
+
+                                <div id="sosearchpro" class="col-md-offset-12 col-md-12 col-sm-12 search-pro" style="padding-left: 36px;margin-left: 28px; width: 150%;">
+                                  <form  id="searchp"  >
+                                    {{csrf_field()}}
+                                    <div id="search0" class="search input-group">
+                                      <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Enter keywords to search..." name="search">
+                                      <span class="input-group-btn">
+                                        <input type="submit" class="button-search btn btn-primary" name="submit" value="submit"><i class="fa fa-search"></i></input>
+                                      </span>
+                                    </div>
+                                    </form>
+                                    <input type="text" class="autosearch-input form-control mobileShow" id="mobilesearchinput" name="mobilesearchinput" value="product/search" style="border: 1px solid #e5e5e5;
+                                    box-shadow: none;
+                                    border-radius: 15px 0 0 15px;
+                                    width: 57%;"/>
+
+                                </div>
+
+
+
+
+                            </div>
+                          </div>
+
+
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="column">
+                              <a href="#" class="title-submenu">النتائج</a>
+
+                              <div id="Result">
+
+
+
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </li>
 
 
 
@@ -371,5 +427,41 @@
         })
       })
     })
+  </script>
+  <script>
+  $(document).ready(function () {
+  	$("#searchp").submit(function (e) {
+  		e.preventDefault();
+  		var data = $("#searchp").serialize();
+  		$.ajax({
+  			url:"/search",
+  			type:"POST",
+  			data:data,
+  			success : function (come) {
+          // console.log(come[0]);
+          if (come.length  === 0) {
+          var  msg = "no products Similar";
+          $("#Result").html(msg);
+
+          }
+          if (come.length  !== 0) {
+            console.log(come.length);
+            for (var i = 0; i < come.length; i++) {
+              var path=come[i]['path'];
+              var name=come[i]['product_name_ar'];
+              var slug=come[i]['product_slug_ar'];
+              $("#Result").append('<ul class="row-list"><a href="/product/'+slug+'"> <img src="'+path+'" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview">'+name+'</a></ul>');
+
+            }
+
+          }
+
+
+  			}
+  		})
+  	})
+  })
+
+
   </script>
 @endsection

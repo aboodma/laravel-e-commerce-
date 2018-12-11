@@ -45,6 +45,7 @@
 	<link href="{{ asset('/css/footer2.css')}}" rel="stylesheet">
 	<link id="color_scheme" href="{{ asset('/css/home5.css')}}" rel="stylesheet">
 	<link href="{{ asset('/css/responsive.css')}}" rel="stylesheet">
+  <script type="text/javascript" src="{{ asset('/js/jquery-2.2.4.min.js') }}"></script>
 
 
 </head>
@@ -56,7 +57,7 @@
 @yield('content')
 <!-- footer -->
 <script type="text/javascript"><!--
-	var $typeheader = 'header-home1';
+	var $typeheader = 'header-home5';
 	//-->
 </script>
   <br>

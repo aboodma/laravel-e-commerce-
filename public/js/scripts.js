@@ -1,3 +1,18 @@
+
+$(document).ready(function () {
+	$("#searchp").submit(function (e) {
+		e.preventDefault();
+		var data = $("#searchp").serialize();
+		$.ajax({
+			url:"/search",
+			type:"POST",
+			data:data,
+			success : function (come) {
+				alert(come);
+			}
+		})
+	});
+
 function ChangeLang(data) {
 	$.get('/lang/?lang='+data,function(){
 		location.reload();
@@ -30,9 +45,38 @@ $("#button-confirm").on("click",function(e){
 	$.get('/Customer/Check',function (data) {
 		if (data==0) {
 			window.location.href = '/Customer/login';
-			
+
 		}if(data==1){
 
 		}
 	});
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 })

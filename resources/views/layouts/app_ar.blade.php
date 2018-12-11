@@ -45,6 +45,7 @@
 	<link id="color_scheme" href="{{ asset('/css/home5.css')}}" rel="stylesheet">
 	<link href="{{ asset('/css/responsive.css')}}" rel="stylesheet">
 
+	<script type="text/javascript" src="{{ asset('js/jquery-2.2.4.min.js') }}"></script>
 
 </head>
 

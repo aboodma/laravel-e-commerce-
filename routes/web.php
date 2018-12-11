@@ -11,7 +11,8 @@
 |
 */
 
-
+ /* Search route*/
+ Route::post('/search','VisitorController@search');
 
 //Admin Routes
 Route::get('/GrAdmin','AdminController@index');
@@ -65,3 +66,4 @@ Route::get('/login','CustomerController@index');
 Route::get('/Register','CustomerController@Register');
 /* Customer Post Requests Routes*/
 Route::post('/Customer/login','CustomerController@Login');
+Route::post('/Customer/register','CustomerController@store');

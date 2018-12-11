@@ -195,12 +195,12 @@
           <div id="sosearchpro" class="col-md-offset-1 col-md-3 col-sm-12 search-pro">
             <form method="GET" action="#">
               <div id="search0" class="search input-group">
-                <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Enter keywords to search..." name="search">
+                <input required class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Enter keywords to search..." name="search">
                 <span class="input-group-btn">
                   <button type="submit" class="button-search btn btn-primary" name="submit_search"><i class="fa fa-search"></i></button>
                 </span>
               </div>
-              <input type="hidden" name="route" value="product/search" />
+              <input required type="hidden" name="route" value="product/search" />
             </form>
           </div>
           <!-- //end Search -->
@@ -310,7 +310,8 @@
   			<div id="content" class="col-sm-12">
   				<h2 class="title">Register Account</h2>
   				<p>If you already have an account with us, please login at the <a href="/login">login page</a>.</p>
-  				<form action="" method="post" enctype="multipart/form-data" class="form-horizontal account-register clearfix">
+          <form id="customerRegister" class="form-horizontal account-register clearfix">
+            {{csrf_field()}}
   					<fieldset id="account">
   						<legend>Your Personal Details</legend>
   						<div class="form-group required" style="display: none;">
@@ -318,7 +319,7 @@
   							<div class="col-sm-10">
   								<div class="radio">
   									<label>
-  										<input type="radio" name="customer_group_id" value="1" checked="checked"> Default
+  										<input required type="radio" name="customer_group_id" value="1" checked="checked"> Default
   									</label>
   								</div>
   							</div>
@@ -326,31 +327,31 @@
   						<div class="form-group required">
   							<label class="col-sm-2 control-label" for="input-firstname">First Name</label>
   							<div class="col-sm-10">
-  								<input type="text" name="firstname" value="" placeholder="First Name" id="input-firstname" class="form-control">
+  								<input required type="text" name="firstname" value="" placeholder="First Name" id="input-firstname" class="form-control">
   							</div>
   						</div>
   						<div class="form-group required">
   							<label class="col-sm-2 control-label" for="input-lastname">Last Name</label>
   							<div class="col-sm-10">
-  								<input type="text" name="lastname" value="" placeholder="Last Name" id="input-lastname" class="form-control">
+  								<input required type="text" name="lastname" value="" placeholder="Last Name" id="input-lastname" class="form-control">
   							</div>
   						</div>
   						<div class="form-group required">
   							<label class="col-sm-2 control-label" for="input-email">E-Mail</label>
   							<div class="col-sm-10">
-  								<input type="email" name="email" value="" placeholder="E-Mail" id="input-email" class="form-control">
+  								<input required type="email" name="email" value="" placeholder="E-Mail" id="input-email" class="form-control">
   							</div>
   						</div>
   						<div class="form-group required">
   							<label class="col-sm-2 control-label" for="input-telephone">Telephone</label>
   							<div class="col-sm-10">
-  								<input type="tel" name="telephone" value="" placeholder="Telephone" id="input-telephone" class="form-control">
+  								<input required type="tel" name="telephone" value="" placeholder="Telephone" id="input-telephone" class="form-control">
   							</div>
   						</div>
   						<div class="form-group">
   							<label class="col-sm-2 control-label" for="input-fax">Fax</label>
   							<div class="col-sm-10">
-  								<input type="text" name="fax" value="" placeholder="Fax" id="input-fax" class="form-control">
+  								<input required type="text" name="fax" value="" placeholder="Fax" id="input-fax" class="form-control">
   							</div>
   						</div>
   					</fieldset>
@@ -359,31 +360,31 @@
   						<div class="form-group">
   							<label class="col-sm-2 control-label" for="input-company">Company</label>
   							<div class="col-sm-10">
-  								<input type="text" name="company" value="" placeholder="Company" id="input-company" class="form-control">
+  								<input required type="text" name="company" value="" placeholder="Company" id="input-company" class="form-control">
   							</div>
   						</div>
   						<div class="form-group required">
   							<label class="col-sm-2 control-label" for="input-address-1">Address 1</label>
   							<div class="col-sm-10">
-  								<input type="text" name="address_1" value="" placeholder="Address 1" id="input-address-1" class="form-control">
+  								<input required type="text" name="address_1" value="" placeholder="Address 1" id="input-address-1" class="form-control">
   							</div>
   						</div>
   						<div class="form-group">
   							<label class="col-sm-2 control-label" for="input-address-2">Address 2</label>
   							<div class="col-sm-10">
-  								<input type="text" name="address_2" value="" placeholder="Address 2" id="input-address-2" class="form-control">
+  								<input required type="text" name="address_2" value="" placeholder="Address 2" id="input-address-2" class="form-control">
   							</div>
   						</div>
   						<div class="form-group required">
   							<label class="col-sm-2 control-label" for="input-city">City</label>
   							<div class="col-sm-10">
-  								<input type="text" name="city" value="" placeholder="City" id="input-city" class="form-control">
+  								<input required type="text" name="city" value="" placeholder="City" id="input-city" class="form-control">
   							</div>
   						</div>
   						<div class="form-group required">
   							<label class="col-sm-2 control-label" for="input-postcode">Post Code</label>
   							<div class="col-sm-10">
-  								<input type="text" name="postcode" value="" placeholder="Post Code" id="input-postcode" class="form-control">
+  								<input required type="text" name="postcode" value="" placeholder="Post Code" id="input-postcode" class="form-control">
   							</div>
   						</div>
   						<div class="form-group required">
@@ -404,13 +405,17 @@
   						<div class="form-group required">
   							<label class="col-sm-2 control-label" for="input-password">Password</label>
   							<div class="col-sm-10">
-  								<input type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control">
+  								<input required type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control">
+                  <small id="error"></small>
+
   							</div>
   						</div>
   						<div class="form-group required">
   							<label class="col-sm-2 control-label" for="input-confirm">Password Confirm</label>
   							<div class="col-sm-10">
-  								<input type="password" name="confirm" value="" placeholder="Password Confirm" id="input-confirm" class="form-control">
+  								<input required type="password" name="confirm" value="" placeholder="Password Confirm" id="input-confirm" class="form-control">
+                  <small id="errorco"></small>
+
   							</div>
   						</div>
   					</fieldset>
@@ -418,8 +423,8 @@
   						<legend></legend>
               <div class="buttons">
     						<div class="pull-right">I have read and agree to the <a href="#" class="agree"><b>Terms and Privacy</b></a>
-    							<input class="box-checkbox" type="checkbox" name="agree" value="1"> &nbsp;
-    							<input type="submit" value="Continue" class="btn btn-primary">
+    							<input required class="box-checkbox" type="checkbox" name="agree" value="1"> &nbsp;
+    							<input  type="submit" value="Continue" class="btn btn-primary">
     						</div>
     					</div>
   					</fieldset>
@@ -434,4 +439,37 @@
   		</div>
   	</div>
     <br>
+    <script>
+      function passwordvalidation() {
+        var value = $("#input-password").val();
+        if (value < 6) {
+          var msg = "Password must be more than 6 digits";
+          $("#error").html(msg);
+        }
+      };
+      function confirmpass() {
+        var value = $("#input-password").val();
+        var confirmv = $("#input-confirm").val();
+        if (confirmv != value) {
+          var msg="Password does not match ";
+  $("#errorco").html(msg);
+        }
+      };
+      $(document).ready(function () {
+        $("#customerRegister").submit(function (e) {
+          var form = $("#customerRegister");
+          e.preventDefault();
+          var Data = $(form).serialize();
+          $.ajax({
+            url:"/Customer/register",
+            type:"POST",
+            data:Data,
+            success:function (req){
+              window.location.href = "/Customer/login";
+            }
+          })
+
+        })
+      })
+    </script>
 @endsection
