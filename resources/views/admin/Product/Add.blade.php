@@ -197,12 +197,55 @@
                                       </button>
                                   </div>
                                 </form>
+
                                 <form action="/GrAdmin/Product/image" enctype="multipart/form-data" class="dropzone" id="dropzone" style="display:none">
                                                     {{ csrf_field() }}
+                                                    <input type="hidden" id="product_id" name="product_id" value="">
                                                     <div class="fallback">
-<input name="file" type="file" multiple />
-</div>
+                                                <input name="file" type="file" multiple />
+                                                </div>
                                                 </form>
+                                                <div class="done" id="done" style="display:none">
+                                                  <button type="button" id="btndone" class="btn btn-primary btn-sm" name="button">Done</button>
+                                                </div>
+                                                <form id="sizes"  style="display:none">
+                                                  {{csrf_field()}}
+                                                  <input type="hidden" id="product_ids" name="product_ids" value="">
+                                                  <div class="row form-group">
+                                                          <div class="col col-md-2">
+                                                              <label for="textarea-input" class=" form-control-label">sizes</label>
+                                                              <button type="button" id="addcol" class="btn btn-primary btn-sm" name="button"> <i class="fa fa-plus"></i> </button>
+                                                          </div>
+                                                          <div class="col-12" id="apan">
+
+
+                                                          <div class="col-12 col-md-4">
+                                                            <label for="">Size name</label>
+                                                            <input type="text" id="sizename" name="sizename[]"  class="form-control">
+
+
+                                                          </div>
+                                                          <div class="col-12 col-md-4">
+                                                            <label>Size Count</label>
+                                                            <input type="number" id="sizecount" name="sizecount[]"  class="form-control">
+
+
+                                                          </div>
+                                                          </div>
+                                                          <div class="col-12" id="repo">
+
+                                                          </div>
+                                                      </div>
+                                                      <div class="card-footer">
+                                                          <button type="submit" id="sizesAdd" class="btn btn-primary btn-sm">
+                                                              <i class="fa fa-dot-circle-o"></i> Submit
+                                                          </button>
+                                                          <button type="reset" class="btn btn-danger btn-sm">
+                                                              <i class="fa fa-ban"></i> Reset
+                                                          </button>
+                                                      </div>
+                                                </form>
+
                               </div>
                           </div>
                          </div>
@@ -221,8 +264,37 @@
                      data:data,
                      success: function(req){
                        $("#newproduct").css('display','none');
+                       $("#product_id").val(req);
                        $("#dropzone").css('display','block');
+                       $("#done").css('display','block');
                      },
+                   })
+                 })
+                 $("#btndone").on("click",function () {
+                   $("#dropzone").css('display','none');
+                   $("#done").css('display','none');
+                  var product_id =   $("#product_id").val();
+                   $("#product_ids").val(product_id);
+                   $("#sizes").css('display','block');
+
+                 })
+                 $("#addcol").on("click",function () {
+                    var rep = '<div class="col-12 col-md-4"><label for="">Size name</label><input type="text" id="sizename" name="sizename[]"  class="form-control"></div><div class="col-12 col-md-4"><label>Size Count</label><input type="number" id="sizecount" name="sizecount[]"  class="form-control"></div>';
+                    $(rep).appendTo("#repo");
+                 })
+
+                 $("#sizesAdd").on('click',function (e) {
+                   e.preventDefault();
+                   var data = $("#sizes").serialize();
+                   $.ajax({
+                     url:"/GrAdmin/Product/Sizes",
+                     type:"POST",
+                     data:data,
+                     success:function (req) {
+                       alert("New Product Added Successfully");
+
+                       window.location.reload();
+                     }
                    })
                  })
                })

@@ -73,7 +73,7 @@
                                                <td>{{$category->name_en}}</td>
                                                <td>{{$category->name_gr}}</td>
 
-                                               <td> <button type="button" name="button" class="btn btn-primary">Edit</button>
+                                               <td> <button type="button" onclick="Redirecter('/GrAdmin/Category/Edit/{{$category->id}}')" name="button" class="btn btn-primary">Edit</button>
                                                     <button type="button" name="button" class="btn btn-danger">Delete</button> </td>
                                            </tr>
                                                @endforeach

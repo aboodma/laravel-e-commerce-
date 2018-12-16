@@ -49,8 +49,396 @@
 
 
 </head>
+<style media="screen">
+  .mobileShow { display: none;}
+  @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px){
+      .mobileShow {display: inline;}
+  }
+</style>
+
+<body class="res layout-subpage">
+    <div id="wrapper" class="wrapper-full ">
+	<!-- Header Container  -->
+  <div class="ip-header">
+    <h1 class="ip-logo">
+      <a href="/">
+        <img src="/image/demo/logos/theme_logo.png" alt="SW Shoppy">
+      </a>
+    </h1>
+    <div class="ip-loader">
+      <svg class="ip-inner" width="60px" height="60px" viewBox="0 0 80 80">
+        <path class="ip-loader-circlebg" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"></path>
+        <path id="ip-loader-circle" class="ip-loader-circle" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" style="stroke-dashoffset: 0; stroke-dasharray: 192.617;"></path>
+      </svg>
+    </div>
+  </div>
+  <!-- End Preloading Screen -->
+
+  <!-- TopBar Container  -->
+  <div class="topbar hidden-xs">
+    <div class="container">
+      <div class="row">
+        <div class="block-policy-top ">
+          <div class="policy policy1 col-sm-4 col-xs-12">
+            <div class="policy-inner">
+              <i class="ico-policy"></i>
+              <h4>إسترد نقودك خلال 30 يوما</h4>
+              <span>ضمان إعادة المنتح</span>
+            </div>
+          </div>
+          <div class="policy policy2 col-sm-4 col-xs-12">
+            <div class="policy-inner">
+            <i class="ico-policy"></i>
+            <h4>شحن مجاني</h4>
+            <span>عند إتمام طلبية تزيد عن 100$</span>
+            </div>
+          </div>
+          <div class="policy policy3 col-sm-4 col-xs-12">
+            <div class="policy-inner">
+            <i class="ico-policy"></i>
+            <h4>شحن امن و إلى جميع انحاء العالم</h4>
+            <span>يمكنك طلب منتجك من اي مكان  </span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <!-- //TopBar Container  -->
+
+  <!-- Header Container  -->
+  <header id="header" class="layout-boxed variantleft type_5">
+
+    <!-- Header Top -->
+    <div class="header-top compact-hidden">
+      <div class="container">
+        <div class="row">
+          <div class="header-top-left form-inline col-md-6 col-sm-4 col-xs-12 compact-hidden">
+            <div class="form-group languages-block ">
+              <form action="#" method="post" enctype="multipart/form-data" id="bt-language">
+                <a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
+                  <img src="/image/demo/flags/gb.png" alt="English" title="English">
+                  <span class="">English</span>
+                  <span class="fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li> <a onclick="ChangeLang('ar')" href="#"> <img class="image_flag" src="/image/demo/flags/lb.png" alt="Arabic" title="Arabic" /> العربية </a> </li>
+                  <li><a onclick="ChangeLang('en')" href="#"><img class="image_flag" src="/image/demo/flags/gb.png" alt="English" title="English" /> English </a></li>
+                  <li><a onclick="ChangeLang('du')" href="#"><img class="image_flag" src="/image/demo/flags/gr.png" alt="Dutch" title="Dutch" /> Dutch </a></li>
+                </ul>
+              </form>
+            </div>
+
+            <div class="form-group currencies-block">
+              <form action="#" method="post" enctype="multipart/form-data" id="currency">
+                <a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
+                  <span class="icon icon-credit "></span> US Dollar <span class="fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu btn-xs">
+                  <li> <a onclick="ChangeCurrency('€')" href="#">(€)&nbsp;Euro</a></li>
+                  <li> <a onclick="ChangeCurrency('kr')" href="#">(kr)&nbsp;Swedish Krona	</a></li>
+                  <li> <a onclick="ChangeCurrency('$')" href="#">($)&nbsp;US Dollar	</a></li>
+                </ul>
+              </form>
+            </div>
+          </div>
+          <div class="header-top-right collapsed-block text-right  col-md-6 col-sm-8 col-xs-12 compact-hidden">
+
+            <div class="tabBlock" id="TabBlock-1">
+              <ul class="top-link list-inline">
+                @if(session('customer_id'))
+                <li class="wishlist"><a href="/wishlist" class="top-link-wishlist" title="Wishlist"><i class="fa fa-heart"></i> قائمة مفضلتي</a></li>
+                <li class="account" id="my_account"><a href="/profile" title="My Account" class="btn btn-xs dropdown-toggle"> <i class="fa fa-user"></i>حسابي </a></li>
+                <li class="account">
+                  <form id="logout">
+                    {{csrf_field()}}
+                    <input type="hidden" name="customer_id" value="{{session('customer_id')}}">
+                    <!-- <input type="submit"  name="" value="Logout"> <i class="fa fa-user"></i> -->
+                    <button type="button" id="submitlog" name="button" class="btn btn-xs dropdown-toggle"><i class="fa fa-user"></i> تسجيل خروج</button>
+                  </form>
+                </li>
+              @endif
+
+              @if(!session('customer_id'))
+                <li class="signin">
+                  <a href="/login" class="top-link-checkout" title="login"><i class="fa fa-lock" ></i> تسجيل دخول</a>
+                </li>
+
+                @endif
+                <li class="shopping_cart">
+
+                  <!--Cart-->
+                  <div id="cart" class=" btn-group btn-shopping-cart">
+                    <a data-loading-text="Loading..." class="top_cart " href="/cart/show">
+
+                      <div class="shopcart">
+                        <span class="handle pull-left"></span>
+
+                      </div>
+                    </a>
+
+                    <ul class="tab-content content dropdown-menu pull-right shoppingcart-box" role="menu">
+
+                      <li>
+                        <table class="table table-striped">
+                          <tbody>
+                            <tr>
+                              <td class="text-center" style="width:70px">
+                                <a href="product.html"> <img src="/image/demo/shop/product/resize/2.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
+                              </td>
+                              <td class="text-left"> <a class="cart_product_name" href="product.html">Filet Mign</a> </td>
+                              <td class="text-center"> x1 </td>
+                              <td class="text-center"> $1,202.00 </td>
+                              <td class="text-right">
+                                <a href="product.html" class="fa fa-edit"></a>
+                              </td>
+                              <td class="text-right">
+                                <a onclick="cart.remove('2');" class="fa fa-times fa-delete"></a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text-center" style="width:70px">
+                                <a href="product.html"> <img src="/image/demo/shop/product/resize/3.jpg" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
+                              </td>
+                              <td class="text-left"> <a class="cart_product_name" href="product.html">Canon EOS 5D</a> </td>
+                              <td class="text-center"> x1 </td>
+                              <td class="text-center"> $60.00 </td>
+                              <td class="text-right">
+                                <a href="product.html" class="fa fa-edit"></a>
+                              </td>
+                              <td class="text-right">
+                                <a onclick="cart.remove('1');" class="fa fa-times fa-delete"></a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </li>
+                      <li>
+                        <div>
+                          <table class="table table-bordered">
+                            <tbody>
+                              <tr>
+                                <td class="text-left"><strong>Sub-Total</strong>
+                                </td>
+                                <td class="text-right">$1,060.00</td>
+                              </tr>
+                              <tr>
+                                <td class="text-left"><strong>Eco Tax (-2.00)</strong>
+                                </td>
+                                <td class="text-right">$2.00</td>
+                              </tr>
+                              <tr>
+                                <td class="text-left"><strong>VAT (20%)</strong>
+                                </td>
+                                <td class="text-right">$200.00</td>
+                              </tr>
+                              <tr>
+                                <td class="text-left"><strong>Total</strong>
+                                </td>
+                                <td class="text-right">$1,262.00</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <p class="text-right"> <a class="btn view-cart" href="cart.html"><i class="fa fa-shopping-cart"></i>View Cart</a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" href="checkout.html"><i class="fa fa-share"></i>Checkout</a> </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <!--//cart-->
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- //Header Top -->
+
+    <!-- Header center -->
+    <div class="header-center left">
+      <div class="container">
+        <div class="row">
+          <!-- Logo -->
+          <div class="navbar-logo col-md-offset-4 col-md-4 col-sm-12 col-xs-12">
+            <a href="/"><img src="/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
+          </div>
+          <!-- //end Logo -->
+
+          <!-- Search -->
+          <!-- <div id="sosearchpro" class="col-md-offset-1 col-md-3 col-sm-12 search-pro">
+            <form method="GET" action="#">
+              <div id="search0" class="search input-group">
+                <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Enter keywords to search..." name="search">
+                <span class="input-group-btn">
+                  <button type="submit" class="button-search btn btn-primary" name="submit_search"><i class="fa fa-search"></i></button>
+                </span>
+              </div>
+              <input type="hidden" name="route" value="product/search" />
+            </form>
+          </div> -->
+          <!-- //end Search -->
+
+          <!-- Secondary menu -->
 
 
+        </div>
+
+      </div>
+    </div>
+    <!-- //Header center -->
+
+    <!-- Header Bottom -->
+    <div class="header-bottom">
+      <div class="container">
+        <div class="row">
+
+
+          <!-- Main menu -->
+          <div class="megamenu-hori col-xs-12 ">
+            <div class="responsive so-megamenu ">
+      <nav class="navbar-default">
+        <div class=" container-megamenu  horizontal">
+          <div class="navbar-header">
+            <button type="button" id="show-megamenu" data-toggle="collapse" class="navbar-toggle">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          <button type="button" onclick="Redirecter('/cart/show')" style="margin-top: 0px;margin-bottom: 0px;bottom: -17px;padding-left: 10px;margin-left: 10px;left: 71px;top: 58px;"  class="navbar-toggle" name="button">
+            <img src="/image/theme/icons/icon_minicart.png" style="margin-right: -5px;margin-bottom: 0px;" />
+          </button>
+
+          </div>
+
+          <div class="megamenu-wrapper">
+            <span id="remove-megamenu" class="fa fa-times"></span>
+            <div class="megamenu-pattern">
+              <div class="container">
+                <ul class="megamenu " dir="" data-transition="slide" data-animationtime="250">
+
+                  <li class="with-sub-menu hover">
+                    <p class="close-menu"></p>
+                    <a href="#" class="clearfix">
+                      <strong>التصنيفات</strong>
+
+                      <b class="caret"></b>
+                    </a>
+                    <div class="sub-menu" style="width: 100%; right: auto;">
+                      <div class="content" >
+                        <div class="row">
+                              @foreach($data['menus'] as $menu)
+                          <div class="col-md-3">
+                            <div class="column">
+                              <a href="#" class="title-submenu">{{$menu->name_ar}}</a>
+
+                              <div>
+                                <ul class="row-list">
+
+                                  @foreach($data['submenus'] as $sub_menu)
+                                  @if($sub_menu->category_id == $menu->id)
+                                  <li><a href="/Category/{{$sub_menu->id}}">{{$sub_menu->name_ar}}</a></li>
+                                  @endif
+                                    @endforeach
+                                </ul>
+                              </div>
+
+                            </div>
+                          </div>
+                          @endforeach
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="with-sub-menu hover">
+                    <p class="close-menu"></p>
+                    <a href="#" class="clearfix">
+                      <strong>بحث</strong>
+
+                      <i class="fa fa-search"></i>
+                    </a>
+                    <div class="sub-menu" style="width: 100%; right: auto;">
+                      <div class="content" >
+                        <div class="row">
+
+                          <div class="col-md-3">
+                            <div class="column">
+
+                                <div id="sosearchpro" class="col-md-offset-12 col-md-12 col-sm-12 search-pro" style="padding-left: 36px;margin-left: 28px; width: 150%;">
+                                  <form  id="searchp"  >
+                                    {{csrf_field()}}
+                                    <div id="search0" class="search input-group">
+                                      <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Enter keywords to search..." name="search">
+                                      <span class="input-group-btn">
+                                        <input type="submit" class="button-search btn btn-primary" name="submit" value="submit"><i class="fa fa-search"></i></input>
+                                      </span>
+                                    </div>
+                                    </form>
+                                    <input type="text" class="autosearch-input form-control mobileShow" id="mobilesearchinput" name="mobilesearchinput" value="product/search" style="border: 1px solid #e5e5e5;
+                                    box-shadow: none;
+                                    border-radius: 15px 0 0 15px;
+                                    width: 57%;"/>
+
+                                </div>
+
+
+
+
+                            </div>
+                          </div>
+
+
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="column">
+                              <a href="#" class="title-submenu">النتائج</a>
+
+                              <div id="Result">
+
+
+
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </li>
+
+
+
+
+
+
+
+
+
+                </ul>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+                      </div>
+          <!-- //end Main menu -->
+
+        </div>
+      </div>
+
+    </div>
+
+  <!-- Navbar switcher -->
+  <!-- //end Navbar switcher -->
+  </header>
 
 
 
@@ -172,7 +560,7 @@
 				<div class="row">
 					<div class="col-sm-5 copyright-text">جميع الحقوق محفوظة ©</div>
 					<div class="col-sm-7">
-						<div class="block-payment text-right"><img src="image/demo/content/payment.png" alt="payment" title="payment" ></div>
+						<div class="block-payment text-right"><img src="/image/demo/content/payment.png" alt="payment" title="payment" ></div>
 					</div>
 					<!--Back To Top-->
 					<div class="back-to-top"><i class="fa fa-angle-up"></i><span> Top </span></div>
@@ -255,6 +643,19 @@
 var $typeheader = 'header-home5';
 //-->
 </script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5c10f2d97a79fc1bddf099cb/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
 </body>
 
 <!-- Mirrored from demo.smartaddons.com/templates/html/market/html_width_RTL/home5.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 Dec 2018 02:02:39 GMT -->

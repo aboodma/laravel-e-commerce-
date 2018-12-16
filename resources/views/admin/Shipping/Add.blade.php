@@ -56,14 +56,14 @@
                                       <strong>Shipping Company Add Form</strong>
                                   </div>
                                   <div class="card-body card-block">
-                                      <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-
+                                      <form id="shipadd" enctype="multipart/form-data" class="form-horizontal">
+                                        {{csrf_field()}}
                                         <div class="row form-group">
                                             <div class="col col-md-3">
                                                 <label for="text-input" class=" form-control-label">Shipping Company Name ARABIC</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="text-input" name="text-input" placeholder="Company Name" class="form-control">
+                                                <input type="text" id="text-input" name="name_ar" placeholder="Company Name" class="form-control">
 
                                             </div>
                                         </div>
@@ -72,7 +72,7 @@
                                                 <label for="text-input" class=" form-control-label">Shipping Company Name ENGLISH</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="text-input" name="text-input" placeholder="Company Name" class="form-control">
+                                                <input type="text" id="text-input" name="name" placeholder="Company Name" class="form-control">
 
                                             </div>
                                         </div>
@@ -81,7 +81,7 @@
                                                 <label for="text-input" class=" form-control-label">Shipping Company Name DUTCH</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="text-input" name="text-input" placeholder="Company Name" class="form-control">
+                                                <input type="text" id="text-input" name="name_gr" placeholder="Company Name" class="form-control">
 
                                             </div>
                                         </div>
@@ -90,7 +90,7 @@
                                                 <label for="text-input" class=" form-control-label">Shipping Company Price Dolar</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="text-input" name="text-input" placeholder="Price" class="form-control">
+                                                <input type="text" id="text-input" name="price_dolar" placeholder="Price" class="form-control">
 
                                             </div>
                                         </div>
@@ -99,7 +99,7 @@
                                                 <label for="text-input" class=" form-control-label">Shipping Company Price Euro</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="text-input" name="text-input" placeholder="Price" class="form-control">
+                                                <input type="text" id="text-input" name="price_euro" placeholder="Price" class="form-control">
 
                                             </div>
                                         </div>
@@ -108,7 +108,7 @@
                                                 <label for="text-input" class=" form-control-label">Shipping Company Price Krona</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="text-input" name="text-input" placeholder="Price" class="form-control">
+                                                <input type="text" id="text-input" name="price_kron" placeholder="Price" class="form-control">
 
                                             </div>
                                         </div>
@@ -120,7 +120,7 @@
 
 
                                   <div class="card-footer">
-                                      <button type="submit" class="btn btn-primary btn-sm">
+                                      <button id="shipbtn" type="submit" class="btn btn-primary btn-sm">
                                           <i class="fa fa-dot-circle-o"></i> Submit
                                       </button>
                                       <button type="reset" class="btn btn-danger btn-sm">
@@ -134,5 +134,22 @@
                      </div>
                  </div>
              </div>
+             <script>
+               $(document).ready(function () {
+                 $("#shipbtn").on("click",function (e) {
+                   e.preventDefault();
+                   var data = $("#shipadd").serialize();
+                   $.ajax({
+                     url:"/GrAdmin/ship/add",
+                     type:"POST",
+                     data:data,
+                     success: function (req) {
+                       alert("New Shipping Company Added Successfully");
+                       window.location.reload();
+                     }
+                   })
+                 })
+               })
+             </script>
 
 @endsection

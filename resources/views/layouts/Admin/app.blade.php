@@ -65,6 +65,7 @@
                                     <li>
                                         <a href="/GrAdmin/Product">View Products</a>
                                     </li>
+                                  
 
                                 </ul>
                             </li>
@@ -81,26 +82,15 @@
                                         <a href="/GrAdmin/Categories/AddSub">Add Sub Category</a>
                                     </li>
                                     <li>
+                                        <a href="/GrAdmin/subCat">View Sub Categories</a>
+                                    </li>
+                                    <li>
                                         <a href="/GrAdmin/Categories">View Categories</a>
                                     </li>
 
                                 </ul>
                             </li>
-                            <li class="has-sub">
-                                <a href="#">
-                                    <i class="fas fa-tachometer-alt"></i>Sizes
-                                    <span class="bot-line"></span>
-                                </a>
-                                <ul class="header3-sub-list list-unstyled">
-                                    <li>
-                                        <a href="/GrAdmin/Sizes/Add">Add Size</a>
-                                    </li>
-                                    <li>
-                                        <a href="/GrAdmin/Sizes">View Sizes</a>
-                                    </li>
 
-                                </ul>
-                            </li>
                             <li class="has-sub">
                                 <a href="#">
                                     <i class="fas fa-tachometer-alt"></i>Shipping
@@ -131,23 +121,7 @@
 
                                 </ul>
                             </li>
-                            <li class="has-sub">
-                                <a href="/GrAdmin/Home">
-                                    <i class="fas fa-shopping-basket"></i>
-                                    <span class="bot-line"></span>Home</a>
-                                    <ul class="header3-sub-list list-unstyled">
-                                      <li class="has-sub"><a href="#">Sliders</a>
-                                      <ul class="header2-sub-list list-unstyled">
-                                        <li> <a href="/GrAdmin/Home/SlidersAdd">Add</a> </li>
-                                        <li> <a href="#">View</a> </li>
-                                      </ul> </li>
-                                      <li class="has-sub"><a href="#">Banners</a>
-                                      <ul class="header2-sub-list list-unstyled">
-                                        <li> <a href="#">Add</a> </li>
-                                        <li> <a href="#">View</a> </li>
-                                      </ul> </li>
-                                    </ul>
-                            </li>
+
                             <li>
                                 <a href="/GrAdmin/Orders">
                                     <i class="fas fa-shopping-basket"></i>
@@ -501,6 +475,12 @@
 
     <!-- Main JS-->
     <script src="{{asset('/Admin/js/main.js')}}"></script>
+    <script>
+      function Redirecter(link) {
+        // window.location.replace(link);
+        window.location.href = link;
+      }
+    </script>
 
 </body>
 

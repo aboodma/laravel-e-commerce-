@@ -69,6 +69,7 @@
                                                     <br>
                                       <form  id="sliders" class="form-horizontal">
                                         {{ csrf_field() }}
+                                        <input type="hidden" id="id" name="id" value="">
                                               <div class="row form-group">
                                                       <div class="col col-md-3">
                                                           <label for="select" class=" form-control-label">Category</label>
@@ -119,8 +120,8 @@
 success: function(file, response) {
               //alert(response);
               alert(response);
-              var inputs = "<input name='attached_files' id='attached_files' value="+response+" type='hidden' />";
-              $("#sliders").append(inputs);
+                $("#id").val(response);
+
             },
 
 error: function(file, response) {
@@ -137,7 +138,9 @@ error: function(file, response) {
                    type:"POST",
                    data:data,
                    success: function (req) {
-                    location.reload()
+                     alert("New Slider Added Successfully");
+
+                    // window.location.reload()
                    },
                    error: function (req) {
 

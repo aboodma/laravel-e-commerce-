@@ -49,13 +49,14 @@ return [
         ],
         'uploads' => [
           'driver' => 'local',
-          'root'   => public_path(), // previously storage_path();
+          'root'   => public_path().'/image',
+            'visibility' => 'public', // previously storage_path();
     ],
 
         'public' => [
             'driver' => 'local',
             'root' => storage_path('image'),
-            'url' => env('APP_URL').'/public',
+            'url' => env('APP_URL').'/public/image/',
             'visibility' => 'public',
         ],
 

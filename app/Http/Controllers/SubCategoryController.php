@@ -100,6 +100,7 @@ $categories=['menus'=>$menus,'submenu'=>$submenus];
         ->join('product_images','products.id','product_images.product_id')
         ->where('sub_category_id',$sub_Category)
         ->select(
+          'sub__categories.path as catpath','sub__categories.info_ar as catinfo_ar','sub__categories.info_en as catinfo_en','sub__categories.info_gr as catinfo_gr',
         'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr','products.product_info_en',
         'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','products.sold_price_dolar','products.sold_price_euro','products.sold_price_kron','products.sub_category_id',
         'product_images.id','product_images.path','product_images.product_id')
@@ -123,6 +124,7 @@ $categories=['menus'=>$menus,'submenu'=>$submenus];
           ->join('product_images','products.id','product_images.product_id')
           ->where('sub_category_id',$sub_Category)
           ->select(
+            'sub__categories.path as catpath','sub__categories.info_ar as catinfo_ar','sub__categories.info_en as catinfo_en','sub__categories.info_gr as catinfo_gr',
           'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr','products.product_info_en','products.product_info_gr','products.product_info_ar',
           'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','products.sold_price_dolar','products.sold_price_euro','products.sold_price_kron','products.sub_category_id',
           'product_images.id','product_images.path','product_images.product_id')
@@ -146,6 +148,7 @@ $categories=['menus'=>$menus,'submenu'=>$submenus];
             ->join('product_images','products.id','product_images.product_id')
             ->where('sub_category_id',$sub_Category)
             ->select(
+              'sub__categories.path as catpath','sub__categories.info_ar as catinfo_ar','sub__categories.info_en as catinfo_en','sub__categories.info_gr as catinfo_gr',
             'products.id','products.product_name_ar', 'products.product_slug_ar', 'products.product_name_en','products.product_slug_en','products.product_name_gr','products.product_info_en','products.product_info_gr','products.product_info_ar',
             'products.product_slug_gr','products.price_dolar','products.price_euro','products.price_kron','products.sold_price_dolar','products.sold_price_euro','products.sold_price_kron','products.sub_category_id',
             'product_images.id','product_images.path','product_images.product_id')

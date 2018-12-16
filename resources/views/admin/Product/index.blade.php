@@ -80,7 +80,7 @@
                                                <td class="text-right">{{$product->price_euro}}</td>
                                                <td class="text-right">{{$product->price_kron}}</td>
                                                <td class="text-right">{{$product->quantity}}</td>
-                                               <td> <button type="button" name="button" class="btn btn-primary">Edit</button>
+                                               <td> <button type="button" onclick="Redirecter('/GrAdmin/Product/Edit/{{$product->id}}')" name="button" class="btn btn-primary">Edit</button>
                                                     <button type="button" name="button" class="btn btn-danger">Delete</button> </td>
                                            </tr>
                                                @endforeach

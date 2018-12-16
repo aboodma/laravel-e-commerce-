@@ -80,7 +80,7 @@
                                                <td>{{$ship->price_kron}}</td>
 
                                                <td>
-                                                 <button type="button" name="button" class="btn btn-primary">Edit</button>
+                                                 <button type="button" onclick="Redirecter('/GrAdmin/Shipping/Edit/{{$ship->id}}')" name="button" class="btn btn-primary">Edit</button>
                                                     <button type="button" name="button" class="btn btn-danger">Delete</button> </td>
                                            </tr>
                                                @endforeach

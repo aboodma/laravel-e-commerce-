@@ -116,6 +116,8 @@ class ProductController extends Controller
     $categories=['menus'=>$menus,'submenu'=>$submenus];
 
     $data=['productd'=>$productdata,'sizes'=>$sizes,'images'=>$images,'menus'=>$menus,'submenus'=>$submenus,'settings'=>$settings];
+
+    // return $productdata;
           return view('SingleProduct.single_product')->with('data',$data);
             break;
             case 'ar':
@@ -144,7 +146,7 @@ class ProductController extends Controller
                 break;
 
           default:
-          $productdata=Product::where('product_slug_ar',$product)->get();
+          $productdata=Product::where('product_slug_en',$product)->get();
           $sizes=Size::where('product_id',$productdata[0]['id'])->get();
           $images=ProductImages::where('product_id',$productdata[0]['id'])->get();
           $menus=DB::table('categories')->get();
@@ -153,7 +155,9 @@ class ProductController extends Controller
 
     $categories=['menus'=>$menus,'submenu'=>$submenus];
     $data=['productd'=>$productdata,'sizes'=>$sizes,'images'=>$images,'menus'=>$menus,'submenus'=>$submenus,'settings'=>$settings];
-          return view('SingleProduct.single_product_ar')->with('data',$data);
+    // return $productdata;
+
+          return view('SingleProduct.single_product')->with('data',$data);
             break;
         }
 

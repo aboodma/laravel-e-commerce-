@@ -49,9 +49,308 @@
 
 
 </head>
+<style media="screen">
+  .mobileShow { display: none;}
+  @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px){
+      .mobileShow {display: inline;}
+  }
+</style>
+<body class="res layout-subpage banners-effect-6">
+    <div id="wrapper" class="wrapper-full ">
+
+<!-- Preloading Screen -->
+<div class="ip-header">
+  <h1 class="ip-logo">
+    <a href="/">
+      <img src="/image/demo/logos/theme_logo.png" alt="SW Shoppy">
+    </a>
+  </h1>
+  <div class="ip-loader">
+    <svg class="ip-inner" width="60px" height="60px" viewBox="0 0 80 80">
+      <path class="ip-loader-circlebg" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"></path>
+      <path id="ip-loader-circle" class="ip-loader-circle" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" style="stroke-dashoffset: 0; stroke-dasharray: 192.617;"></path>
+    </svg>
+  </div>
+</div>
+<!-- End Preloading Screen -->
+
+<!-- TopBar Container  -->
+<div class="topbar hidden-xs">
+  <div class="container">
+    <div class="row">
+      <div class="block-policy-top ">
+        <div class="policy policy1 col-sm-4 col-xs-12">
+          <div class="policy-inner">
+            <i class="ico-policy"></i>
+            <h4>30 days return</h4>
+            <span>Money back guarantee</span>
+          </div>
+        </div>
+        <div class="policy policy2 col-sm-4 col-xs-12">
+          <div class="policy-inner">
+          <i class="ico-policy"></i>
+          <h4>free shipping on $30</h4>
+          <span>on all orders over $99</span>
+          </div>
+        </div>
+        <div class="policy policy3 col-sm-4 col-xs-12">
+          <div class="policy-inner">
+          <i class="ico-policy"></i>
+          <h4>Safe shopping</h4>
+          <span>Save up to 50% now  </span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<!-- //TopBar Container  -->
+
+<!-- Header Container  -->
+<header id="header" class="layout-boxed variantleft type_5">
+
+  <!-- Header Top -->
+  <div class="header-top compact-hidden">
+    <div class="container">
+      <div class="row">
+        <div class="header-top-left form-inline col-md-6 col-sm-4 col-xs-12 compact-hidden">
+          <div class="form-group languages-block ">
+            <form action="#" method="post" enctype="multipart/form-data" id="bt-language">
+              <a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
+                <img src="/image/demo/flags/gb.png" alt="English" title="English">
+                <span class="">English</span>
+                <span class="fa fa-angle-down"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li> <a onclick="ChangeLang('ar')" href="#"> <img class="image_flag" src="/image/demo/flags/lb.png" alt="Arabic" title="Arabic" /> العربية </a> </li>
+                <li><a onclick="ChangeLang('en')" href="#"><img class="image_flag" src="/image/demo/flags/gb.png" alt="English" title="English" /> English </a></li>
+                <li><a onclick="ChangeLang('du')" href="#"><img class="image_flag" src="/image/demo/flags/gr.png" alt="Dutch" title="Dutch" /> Dutch </a></li>
+              </ul>
+            </form>
+          </div>
+
+          <div class="form-group currencies-block">
+            <form action="#" method="post" enctype="multipart/form-data" id="currency">
+              <a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
+                <span class="icon icon-credit "></span> US Dollar <span class="fa fa-angle-down"></span>
+              </a>
+              <ul class="dropdown-menu btn-xs">
+                <li> <a onclick="ChangeCurrency('€')" href="#">(€)&nbsp;Euro</a></li>
+                <li> <a onclick="ChangeCurrency('kr')" href="#">(kr)&nbsp;Swedish Krona	</a></li>
+                <li> <a onclick="ChangeCurrency('$')" href="#">($)&nbsp;US Dollar	</a></li>
+              </ul>
+            </form>
+          </div>
+        </div>
+        <div class="header-top-right collapsed-block text-right  col-md-6 col-sm-8 col-xs-12 compact-hidden">
+
+          <div class="tabBlock" id="TabBlock-1">
+            <ul class="top-link list-inline">
+              <!-- <li class="checkout"><a href="#" class="top-link-checkout" title="Checkout"><i class="fa fa-check-square-o" ></i> Checkout</a></li> -->
+              @if(session('customer_id'))
+              <li class="wishlist"><a href="/wishlist" class="top-link-wishlist" title="Wishlist"><i class="fa fa-heart"></i> My Favorite List</a></li>
+              <li class="account" id="my_account"><a href="/profile" title="My Account" class="btn btn-xs dropdown-toggle"> <i class="fa fa-user"></i> My Account </a></li>
+              <li class="account">
+                <form id="logout">
+                  {{csrf_field()}}
+                  <input type="hidden" name="customer_id" value="{{session('customer_id')}}">
+                  <!-- <input type="submit"  name="" value="Logout"> <i class="fa fa-user"></i> -->
+                  <button type="button" id="submitlog" name="button" class="btn btn-xs dropdown-toggle"><i class="fa fa-user"></i> Logout</button>
+                </form>
+              </li>
+            @endif
+
+            @if(!session('customer_id'))
+              <li class="signin">
+                <a href="/login" class="top-link-checkout" title="login"><i class="fa fa-lock" ></i> Login</a>
+              </li>
+
+              @endif
+              <li class="shopping_cart">
+
+                <!--Cart-->
+                <div id="cart" class=" btn-group btn-shopping-cart">
+                  <a data-loading-text="Loading..." class="top_cart"  href="/cart/show">
+                    <div class="shopcart">
+                      <span class="handle pull-left"></span>
+
+                    </div>
+                  </a>
+
+
+                </div>
+                <!--//cart/show-->
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="header-center left">
+    <div class="container">
+      <div class="row">
+
+        <div class="navbar-logo col-md-offset-4 col-md-4 col-sm-12 col-xs-12">
+          <a href="/"><img src="/image/demo/logos/logo_5.png" title="Your Store" alt="Your Store" /></a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
 
 
 
+  <div class="header-bottom">
+    <div class="container">
+      <div class="row">
+
+
+
+        <div class="megamenu-hori col-xs-12 ">
+          <div class="responsive so-megamenu ">
+    <nav class="navbar-default">
+      <div class=" container-megamenu  horizontal">
+        <div class="navbar-header" style="margin-left: 128px;margin-top: 20px;top: -68px;left: 101px;">
+          <button type="button" id="show-megamenu" data-toggle="collapse" class="navbar-toggle">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <button type="button" onclick="Redirecter('/cart/show')" style=" color:#262626; margin-top: 8px;top: -40px;right: -72px; padding-bottom: 3px;left: 0px;"  class="navbar-toggle" name="button">
+          <img src="/image/theme/icons/icon_minicart.png" style="margin-right: -5px;margin-bottom: 0px; " />
+        </button>
+        <button type="button" onclick="Redirecter('/profile')" style="color:#262626; margin-top: 8px;top: -85px;right: -139px; padding-bottom: 3px;left: 24px;"  class="navbar-toggle" name="button">
+          <i  class="fa fa-user"></i>
+        </button>
+        </div>
+        <div class="megamenu-wrapper">
+          <span id="remove-megamenu" class="fa fa-times"></span>
+          <div class="megamenu-pattern">
+            <div class="container">
+              <ul class="megamenu " data-transition="slide" data-animationtime="250">
+
+                <li class="with-sub-menu hover">
+                  <p class="close-menu"></p>
+                  <a href="#" class="clearfix">
+                    <strong>Categoreies</strong>
+                    <b class="caret"></b>
+                  </a>
+                  <div class="sub-menu" style="width: 100%; right: auto;">
+                    <div class="content" >
+                      <div class="row">
+                          @foreach($PageData['categories']['menus'] as $menu)
+                        <div class="col-md-3">
+                          <div class="column">
+                            <a href="#" class="title-submenu">{{$menu->name_en}}</a>
+                            <div>
+                              <ul class="row-list">
+                                @foreach($PageData['categories']['submenu'] as $sub_menu)
+                                @if($sub_menu->category_id == $menu->id)
+                                <li><a href="/Category/{{$sub_menu->id}}">{{$sub_menu->name_en}}</a></li>
+                                @endif
+                                  @endforeach
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        @endforeach
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="with-sub-menu hover">
+                  <p class="close-menu"></p>
+                  <a href="#" class="clearfix">
+                    <strong>Search</strong>
+                    <i class="fa fa-search"></i>
+                  </a>
+                  <div class="sub-menu" style="width: 100%; right: auto;">
+                    <div class="content" >
+                      <div class="row">
+
+                        <div class="col-md-3">
+                          <div class="column">
+
+                              <div id="sosearchpro" class="col-md-offset-12 col-md-12 col-sm-12 search-pro" style="padding-left: 36px;margin-left: 28px; width: 150%;">
+                                <form  id="searchp"  >
+                                  {{csrf_field()}}
+                                  <div id="search0" class="search input-group">
+                                    <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Enter keywords to search..." name="search">
+                                    <span class="input-group-btn">
+                                      <input type="submit" class="button-search btn btn-primary" name="submit" value="submit"><i class="fa fa-search"></i></input>
+                                    </span>
+                                  </div>
+                                  </form>
+                                  <input type="text" class="autosearch-input form-control mobileShow" id="mobilesearchinput" name="mobilesearchinput" value="product/search" style="border: 1px solid #e5e5e5;
+                                  box-shadow: none;
+                                  border-radius: 15px 0 0 15px;
+                                  width: 57%;"/>
+
+                              </div>
+
+
+
+
+                          </div>
+                        </div>
+
+
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="column">
+                            <a href="#" class="title-submenu">Results</a>
+
+                            <div id="Result">
+
+
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </li>
+
+
+
+
+
+
+
+
+
+              </ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+                    </div>
+        <!-- //end Main menu -->
+
+      </div>
+    </div>
+
+  </div>
+
+<!-- Navbar switcher -->
+<!-- //end Navbar switcher -->
+</header>
 
 
 @yield('content')
@@ -72,7 +371,7 @@
 							<div class="modcontent">
 
 								<div class="icons-social">
-										<h3 class="modtitle">تابعنا</h3>
+										<h3 class="modtitle">Follow Us</h3>
 										<div class="list-inline">
 											<a title="Facebook" href="@yield('facebook')" target="_blank">
 												<span class="fa fa-facebook icon-circled icon-color"></span>
@@ -106,11 +405,11 @@
 					</div>
 					<div class="col-sm-6 col-md-3 box-information">
 						<div class="module clearfix">
-							<h3 class="modtitle">المعلومات</h3>
+							<h3 class="modtitle">Information</h3>
 							<div class="modcontent">
 								<ul class="menu">
-									<li><a href="about-us.html">حولنا</a></li>
-									<li><a href="faq.html">الأسئلة الأكثر شيوعا</a></li>
+									<li><a href="about-us.html">About Us</a></li>
+									<li><a href="faq.html">FAQ</a></li>
 									<!-- <li><a href="order-history.html">Order history</a></li> -->
 									<!-- <li><a href="order-information.html">Order information</a></li> -->
 								</ul>
@@ -120,11 +419,11 @@
 
 					<div class="col-sm-6 col-md-3 box-service">
 						<div class="module clearfix">
-							<h3 class="modtitle">خدمة العملاء</h3>
+							<h3 class="modtitle">Customer Service</h3>
 							<div class="modcontent">
 								<ul class="menu">
-									<li><a href="contact.html">تواصل معنا</a></li>
-									<li><a href="return.html">الإعادة</a></li>
+									<li><a href="contact.html">Contact Us</a></li>
+									<li><a href="return.html">Return Form</a></li>
 									<!-- <li><a href="sitemap.html">Site Map</a></li> -->
 									<!-- <li><a href="my-account.html">My Account</a></li> -->
 								</ul>
@@ -149,12 +448,12 @@
 
 					<div class="col-sm-6 col-md-3 collapsed-block ">
 						<div class="module clearfix">
-							<h3 class="modtitle">تواصل معنا	</h3>
+							<h3 class="modtitle">Contact Us	</h3>
 							<div class="modcontent">
 								<ul class="contact-address">
 									<li><span class="fa fa-map-marker"></span>  @yield('address') </li>
-									<li><span class="fa fa-envelope-o"></span> البريد الإلكتروني: <a href="#">  @yield('mail') </a></li>
-									<li><span class="fa fa-phone">&nbsp;</span> الهاتف : @yield('phone') </li>
+									<li><span class="fa fa-envelope-o"></span> Mail: <a href="#">  @yield('mail') </a></li>
+									<li><span class="fa fa-phone">&nbsp;</span> Phone : @yield('phone') </li>
 								</ul>
 							</div>
 						</div>
@@ -170,9 +469,9 @@
 		<div class="footer-bottom-block ">
 			<div class=" container">
 				<div class="row">
-					<div class="col-sm-5 copyright-text">جميع الحقوق محفوظة ©</div>
+					<div class="col-sm-5 copyright-text">all copyrights reserved ©</div>
 					<div class="col-sm-7">
-						<div class="block-payment text-right"><img src="image/demo/content/payment.png" alt="payment" title="payment" ></div>
+						<div class="block-payment text-right"><img src="/image/demo/content/payment.png" alt="payment" title="payment" ></div>
 					</div>
 					<!--Back To Top-->
 					<div class="back-to-top"><i class="fa fa-angle-up"></i><span> Top </span></div>
@@ -255,6 +554,19 @@
 var $typeheader = 'header-home5';
 //-->
 </script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5c10f2d97a79fc1bddf099cb/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
 </body>
 
 <!-- Mirrored from demo.smartaddons.com/templates/html/market/html_width_RTL/home5.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 Dec 2018 02:02:39 GMT -->

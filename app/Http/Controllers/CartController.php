@@ -185,6 +185,7 @@ $categories=['menus'=>$menus,'submenu'=>$submenus];
 
 
       }
+      $cart->clear();
       echo "1";
     }
 }

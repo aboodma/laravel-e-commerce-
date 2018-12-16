@@ -627,23 +627,5 @@ width: 57%;"/>
 
   		</div>
   	</div>
-    <script>
-      $(document).ready(function () {
-        $('#orderform').submit(function (e) {
-            e.preventDefault();
-            var Data = $("#orderform").serialize();
-            $.ajax({
-              url:'/cart/order',
-              type:"POST",
-              data:Data,
-              success: function (res){
-                if (res == "1") {
-                  $('#ignismyModal').modal('show');
 
-                }
-              }
-            })
-        })
-      })
-    </script>
 @endsection

@@ -56,14 +56,14 @@
                                       <strong>Sub Category Add Form</strong>
                                   </div>
                                   <div class="card-body card-block">
-                                      <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-
+                                      <form id="subform" enctype="multipart/form-data" class="form-horizontal">
+                                        {{csrf_field()}}
                                         <div class="row form-group">
                                             <div class="col col-md-3">
                                                 <label for="text-input" class=" form-control-label">Sub Category Name ARABIC</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="text-input" name="text-input" placeholder="Text" class="form-control">
+                                                <input type="text" id="name_ar" name="name_ar" placeholder="Text" class="form-control">
                                                 <small class="form-text text-muted">This is a help text</small>
                                             </div>
                                         </div>
@@ -72,7 +72,7 @@
                                                 <label for="text-input" class=" form-control-label">Sub Category Name ENGLISH</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="text-input" name="text-input" placeholder="Text" class="form-control">
+                                                <input type="text" id="name_en" name="name_en" placeholder="Text" class="form-control">
                                                 <small class="form-text text-muted">This is a help text</small>
                                             </div>
                                         </div>
@@ -81,7 +81,7 @@
                                                 <label for="text-input" class=" form-control-label">Sub Category Name DUTCH</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="text-input" name="text-input" placeholder="Text" class="form-control">
+                                                <input type="text" id="name_gr" name="name_gr" placeholder="Text" class="form-control">
                                                 <small class="form-text text-muted">This is a help text</small>
                                             </div>
                                         </div>
@@ -90,7 +90,7 @@
                                                     <label for="textarea-input" class=" form-control-label">Sub Category Description ARABIC</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <textarea name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea>
+                                                    <textarea name="info_ar" id="info_ar" rows="9" placeholder="Content..." class="form-control"></textarea>
                                                 </div>
                                             </div>
                                             <div class="row form-group">
@@ -98,7 +98,7 @@
                                                         <label for="textarea-input" class=" form-control-label">Sub Category Description ENGLISH</label>
                                                     </div>
                                                     <div class="col-12 col-md-9">
-                                                        <textarea name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea>
+                                                        <textarea name="info_en" id="info_en" rows="9" placeholder="Content..." class="form-control"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
@@ -106,7 +106,7 @@
                                                             <label for="textarea-input" class=" form-control-label">Sub Category Description DUTCH</label>
                                                         </div>
                                                         <div class="col-12 col-md-9">
-                                                            <textarea name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea>
+                                                            <textarea name="info_gr" id="info_gr" rows="9" placeholder="Content..." class="form-control"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
@@ -129,19 +129,54 @@
 
 
                                   <div class="card-footer">
-                                      <button type="submit" class="btn btn-primary btn-sm">
+                                      <button type="submit" id="subbtn" class="btn btn-primary btn-sm">
                                           <i class="fa fa-dot-circle-o"></i> Submit
                                       </button>
                                       <button type="reset" class="btn btn-danger btn-sm">
                                           <i class="fa fa-ban"></i> Reset
                                       </button>
                                   </div>
+                                </form>
+
                               </div>
+                          </div>
+                          <div class="card">
+                            <div class="card-header">
+
+                            </div>
+                            <div class="card-body card-block">
+                              <form action="/GrAdmin/SubCategory/image" enctype="multipart/form-data" class="dropzone" id="dropzone" >
+                                                  {{ csrf_field() }}
+                                                  <input type="hidden"  name="categoryid" id="catid" value="">
+                                                  <div class="fallback">
+                                              <input name="file" type="file" multiple />
+                                              </div>
+                                              </form>
+                            </div>
+                            <div class="card-footer">
+
+                            </div>
+
                           </div>
                          </div>
 
                      </div>
                  </div>
              </div>
-
+             <script>
+               $(document).ready(function () {
+                 $("#subbtn").on("click",function (e) {
+                   e.preventDefault();
+                   var data = $("#subform").serialize();
+                   $.ajax({
+                     url:"/GrAdmin/SubCategory/insert",
+                     type:"POST",
+                     data:data,
+                     success:function (req) {
+                       $("#catid").val(req);
+                     }
+                   })
+                 })
+               })
+             </script>
 @endsection
